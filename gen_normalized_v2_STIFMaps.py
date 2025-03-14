@@ -14,29 +14,24 @@ import tifffile
 import time
 
 # Directories
-project_dir = '/Users/steve/Projects/WeaverLab/STIFMaps'
-IPMN_directory = os.path.join(project_dir, "IPMN_images")
-STIFMaps_directory = os.path.join(project_dir, "STIFMap_normalized_images")
+project_dir = '/home/steve/Projects/WeaverLab/STIFMaps'
+models_dir = '/home/steve/Projects/WeaverLab/STIFMap_dataset/trained_models'
+IPMN_directory = os.path.join(project_dir, "IPMN_images/normalized_tiled_v2")
+STIFMaps_directory = os.path.join(project_dir, "STIFMap_normalized_images_v2")
 os.makedirs(STIFMaps_directory, exist_ok=True)
 
 # Define the base name and the number of rows and columns
 base_name = "27620"
 base_name_C0 = "27620_C0_full_tile"
 base_name_C1 = "27620_C1_full_tile"
-num_rows = 6  # Example: Number of rows in the grid of tiles
-num_cols = 7  # Example: Number of columns in the grid of tiles
-
-# Create a list of file names for C0 and C1 tiles
-C0_files = [f"{base_name_C0}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
-C1_files = [f"{base_name_C1}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
 
 # STIFMap models
 models = [
-    '/Users/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1171.pt',
-    '/Users/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1000.pt',
-    '/Users/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1043.pt',
-    '/Users/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1161.pt',
-    '/Users/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1180.pt'
+    os.path.join(models_dir, 'iteration_1171.pt'),
+    os.path.join(models_dir, 'iteration_1000.pt'),
+    os.path.join(models_dir, 'iteration_1043.pt'),
+    os.path.join(models_dir, 'iteration_1161.pt'),
+    os.path.join(models_dir, 'iteration_1180.pt')
 ]
 
 # Parameters
@@ -107,7 +102,14 @@ def gen_output_path(filename):
     return os.path.join(STIFMaps_directory, output_file)
 
 # Function to generate and save the STIFMap
-def run_STIFMap(dapi, collagen, name, step, models, batch_size, square_side):
+def run_STIFMap(dapi, collagen, name, step, models, batch_size, square_side, check_existing=True):
+    output_path = gen_output_path(dapi)
+
+    # Check if the tile has already been processed
+    if check_existing and os.path.exists(output_path):
+        print(f"Skipping already processed tile: {dapi} and {collagen}")
+        return
+
     start_time = time.perf_counter()
 
     z_out = STIFMap_generation.generate_STIFMap(dapi, collagen, name, step, models=models,
@@ -119,16 +121,10 @@ def run_STIFMap(dapi, collagen, name, step, models, batch_size, square_side):
 
     output_image = np.mean(z_out, axis=0)
 
-    # Normalize the image to the range [0, 1]
-    # output_image_normalized = output_image / output_image.max()
-
-    # Normalize the image to the range [0, 1] globally
     global_min = np.min(output_image)
     global_max = np.max(output_image)
     output_image_normalized = (output_image - global_min) / (global_max - global_min)
 
-    # Save the image using matplotlib
-    output_path = gen_output_path(dapi)
     plt.imsave(output_path, output_image_normalized, cmap="viridis")
     print(f"Saved image: {output_path}")
 
@@ -141,28 +137,58 @@ def run_STIFMap(dapi, collagen, name, step, models, batch_size, square_side):
 def is_tile_completed(output_path):
     return os.path.exists(output_path)
 
-# Main: Loop through all the tiled C0 and C1 images and pass each one to run_STIFMap()
-for i in range(num_rows):
-    for j in range(num_cols):
-        dapi = os.path.join(IPMN_directory, 'normalized_tiled', C0_files[i * num_cols + j])
-        collagen = os.path.join(IPMN_directory, 'normalized_tiled', C1_files[i * num_cols + j])
-        output_path = gen_output_path(dapi)
+# Automatically determine num_rows and num_cols based on filenames
+tile_pattern = re.compile(rf"{base_name_C0}_(\d+)_(\d+)\.tif")
 
-        # Check if the tile has already been processed
-        if is_tile_completed(output_path):
-            print(f"Skipping already processed tile: {C0_files[i * num_cols + j]} and {C1_files[i * num_cols + j]}")
+# Dictionary to store how many columns exist per row
+row_col_map = {}
+
+for file in os.listdir(IPMN_directory):
+    match = tile_pattern.match(file)
+    if match:
+        row, col = map(int, match.groups())
+        row_col_map.setdefault(row, set()).add(col)
+
+# Determine the number of rows and columns
+max_row = max(row_col_map.keys())
+max_col = max(max(cols) for cols in row_col_map.values())
+num_rows = max_row + 1
+num_cols = max_col + 1
+
+print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
+
+# Create a list of file names for C0 and C1 tiles
+C0_files = [f"{base_name_C0}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
+C1_files = [f"{base_name_C1}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
+
+# Main: Loop through all the tiled C0 and C1 images and pass each one to run_STIFMap()
+for row in range(num_rows):  # Iterate over all rows
+    for col in range(num_cols):
+        dapi_path = os.path.join(IPMN_directory, f"{base_name_C0}_{row}_{col}.tif")
+        collagen_path = os.path.join(IPMN_directory, f"{base_name_C1}_{row}_{col}.tif")
+
+        output_path = gen_output_path(dapi_path)
+
+        # Ensure files exist before processing
+        if not os.path.exists(dapi_path) or not os.path.exists(collagen_path):
+            print(f"Skipping missing tile: {dapi_path} or {collagen_path}")
             continue
 
-        print(f"Processing: {C0_files[i * num_cols + j]} and {C1_files[i * num_cols + j]}")
+        if is_tile_completed(output_path):
+            print(f"Skipping already processed tile: {dapi_path} and {collagen_path}")
+            continue
+
+        print(f"Processing: {dapi_path} and {collagen_path}")
 
         run_STIFMap(
-            dapi=dapi,
-            collagen=collagen,
+            dapi=dapi_path,
+            collagen=collagen_path,
             name='test',
             step=step,
             models=models,
             batch_size=batch_size,
-            square_side=square_side
+            square_side=square_side,
+            check_existing=True  # Set to True to check if the file already exists
         )
 
 # Stitch the processed tiles back together

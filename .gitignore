@@ -6,6 +6,10 @@ IPMN_images/
 STIFMap_normalized_images/
 z_out/
 STIFMap_images_sav/
+STIFMap_normalized_images_v1/
+STIFMap_normalized_images_v2/
+*.png
+.ipynb_checkpoints/
 27620_STIFMap_resized_cropped.zip
 27620_STIFMap_stitched-1.tif
 27620_resized_sav.png
