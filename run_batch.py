@@ -1,4 +1,5 @@
-from nbclient import NotebookClient, CellExecutionError
+from nbconvert.preprocessors import CellExecutionError
+from nbclient import NotebookClient
 from nbformat import read
 
 for nb_file in ['preprocess_images.ipynb', 'gen_STIFMaps.ipynb']:

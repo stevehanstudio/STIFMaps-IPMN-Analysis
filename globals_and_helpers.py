@@ -12,7 +12,7 @@ MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['4601', '13401', '15806', '5114', '1865', '27620']
+BASE_NAMES = ['15806', '5114', '1865', '27620', '4601', '13401']
 TILE_SIZE = 5003
 
 # Helper Functions
