@@ -35,7 +35,6 @@ C0_files = [f"{base_name_C0}_{i}_{j}.tif" for i in range(num_rows) for j in rang
 # Create a list of file names for C1 tiles
 C1_files = [f"{base_name_C1}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
 
-
 models = [
    '/home/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1171.pt',
    '/home/steve/Projects/WeaverLab/STIFMap_dataset/trained_models/iteration_1000.pt',
