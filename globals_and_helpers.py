@@ -2,6 +2,7 @@ import os
 import re
 import numpy as np
 import tifffile
+from PIL import Image
 import matplotlib.pyplot as plt
 
 # Constants - Directories, Global Variables
@@ -12,8 +13,9 @@ MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['4601', '13401', '15806', '5114', '1865', '27620']
-TILE_SIZE = 5003
+# BASE_NAMES = ['1865']
+BASE_NAMES = ['27620', '15806', '4601', '13401', '5114', '1865']
+TILE_SIZE = 20000 
 
 # Helper Functions
 def normalize_image(image, lower_percentile=1, upper_percentile=99):
@@ -130,3 +132,196 @@ def gen_STIFMap_tile_path(filename):
     # Construct the output file name and path
     output_file = f"{base_name}_{row}_{col}.png"
     return os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles", output_file)
+
+def save_stiffness_colormap(stiffness_map, save_path):
+    """
+    Save a colorbar legend for the given stiffness map.
+
+    Parameters:
+    - stiffness_map (np.ndarray): The stiffness data array.
+    - save_path (str): The path to save the colorbar legend image.
+    """
+    # Extract min and max from the actual data
+    min_value = np.min(stiffness_map)
+    max_value = np.max(stiffness_map)
+
+    # Create a dummy image for the colormap
+    fig, ax = plt.subplots(figsize=(2, 6))
+    dummy_img = ax.imshow([[min_value, max_value]], cmap='viridis', aspect='auto')
+
+    # Remove the dummy axes
+    ax.remove()
+
+    # Create colorbar with proper labeling
+    cbar = fig.colorbar(dummy_img, ax=fig.add_subplot(111))
+    cbar.set_label("Stiffness (Young's Modulus) [kPa]", fontsize=14)
+
+    # Save and close
+    plt.savefig(save_path, bbox_inches='tight')
+    plt.close(fig)
+    
+def generate_colormap_legend(base_index):
+    """
+    Generate and save a colormap legend for the raw stiffness values.
+
+    Parameters:
+    - base_index: Index to BASE_NAMES to determine the base name.
+    """
+    base_name = BASE_NAMES[base_index]
+    stiffness_dir = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
+
+    # Initialize min and max values
+    min_value = float('inf')
+    max_value = float('-inf')
+
+    # Find all .npy files in the directory
+    for file_name in os.listdir(stiffness_dir):
+        if file_name.endswith('.npy'):
+            npy_path = os.path.join(stiffness_dir, file_name)
+            stiffness_map = np.load(npy_path)
+
+            # Update min and max values
+            min_value = min(min_value, np.min(stiffness_map))
+            max_value = max(max_value, np.max(stiffness_map))
+
+    # Create a dummy image for the colormap
+    fig, ax = plt.subplots(figsize=(2, 6))
+    dummy_img = ax.imshow([[min_value, max_value]], cmap='viridis', aspect='auto')
+
+    # Remove the dummy axes
+    ax.remove()
+
+    # Create colorbar with proper labeling
+    cbar = fig.colorbar(dummy_img, ax=fig.add_subplot(111))
+    cbar.set_label("Stiffness (Young's Modulus) [kPa]", fontsize=14)
+
+    # Save the colormap legend
+    legend_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_stiffness_colormap_legend.png")
+    plt.savefig(legend_path, bbox_inches='tight')
+    plt.close(fig)
+    print(f"Colormap legend saved as {legend_path}")
+
+def stitch_STIFMap_tiles(base_name_index, image_format='png'):
+    # Dynamically determine the number of rows and columns
+    base_name = BASE_NAMES[base_name_index]
+    tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
+    STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
+    output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}__STIFMap_stitched.png")
+    
+    row_col_map = {}
+    for file in os.listdir(STIFMaps_directory):
+        match = tile_pattern.match(file)
+        if match:
+            row, col = map(int, match.groups())
+            row_col_map.setdefault(row, set()).add(col)
+
+    if not row_col_map:
+        raise ValueError("No matching files found in the directory.")
+
+    # Correctly determine the number of rows and columns
+    max_row = max(row_col_map.keys())
+    max_col = max(max(cols) for cols in row_col_map.values())
+    num_rows = max_row + 1
+    num_cols = max_col + 1
+
+    print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
+
+    # Determine image dimensions from the first available .png tile
+    image_width = image_height = None
+    for row in range(num_rows):
+        for col in range(num_cols):
+            image_filename = f"{base_name}_{row}_{col}.{image_format}"
+            image_path = os.path.join(STIFMaps_directory, image_filename)
+            if os.path.exists(image_path):
+                try:
+                    with Image.open(image_path) as image:
+                        image_width, image_height = image.size
+                    break
+                except Exception as e:
+                    print(f"Error opening {image_path}: {e}")
+        if image_width is not None:
+            break
+
+    if image_width is None:
+        raise ValueError("No valid .png image files found to determine dimensions.")
+
+    stitched_width = num_cols * image_width
+    stitched_height = num_rows * image_height
+    stitched_image = Image.new('RGB', (stitched_width, stitched_height), color='white')
+
+    for row in range(num_rows):
+        for col in range(num_cols):
+            image_filename = f"{base_name}_{row}_{col}.{image_format}"
+            image_path = os.path.join(STIFMaps_directory, image_filename)
+
+            if os.path.exists(image_path):
+                try:
+                    image = Image.open(image_path)
+                except Exception as e:
+                    print(f"Error opening {image_path}: {e}")
+                    image = Image.new('RGB', (image_width, image_height), color='white')
+                    print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+            else:
+                image = Image.new('RGB', (image_width, image_height), color='white')
+                print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+
+            x = col * image_width
+            y = row * image_height
+            stitched_image.paste(image, (x, y))
+
+    stitched_image.save(output_filename)
+    print(f"Stitched image saved as {output_filename}")
+
+# def save_stiffness_colormap_legend(
+#     cmap="viridis",
+#     min_value=0,
+#     max_value=54286,
+#     label="Stiffness (Young's Modulus) [kPa]",
+#     save_path="stiffness_color_map_legend.png"
+# ):
+#     fig, ax = plt.subplots(figsize=(2, 6))  # Tall, narrow figure
+    
+#     # Create a dummy colormap
+#     gradient = np.linspace(0, 1, 256).reshape(-1, 1)
+#     ax.imshow(gradient, aspect='auto', cmap=cmap)
+    
+#     # Hide axes
+#     ax.set_axis_off()
+    
+#     # Add colorbar
+#     norm = plt.Normalize(vmin=min_value, vmax=max_value)
+#     cbar = fig.colorbar(
+#         plt.cm.ScalarMappable(norm=norm, cmap=cmap),
+#         ax=ax,
+#         orientation='vertical',
+#         fraction=0.1,
+#         pad=0.05
+#     )
+#     cbar.set_label(label, fontsize=14, rotation=90)
+    
+#     plt.tight_layout()
+#     plt.savefig(save_path, dpi=300, bbox_inches='tight', transparent=False)
+#     plt.close()
+#     print(f"Legend saved to {save_path}")
+
+# def save_stiffness_colormap(stitched_image_path, base_name, output_dir=FINAL_OUTPUTS_DIR):
+#     """
+#     Converts the stitched image to a normalized grayscale colormap and saves it as {base_name}_stiffness.png.
+    
+#     Args:
+#         stitched_image_path (str): Path to the stitched image (RGB).
+#         base_name (str): Base name for naming the output.
+#         output_dir (str): Directory where the stiffness colormap will be saved.
+#     """
+#     # Load stitched image and convert to grayscale
+#     stitched_rgb = Image.open(stitched_image_path)
+#     stitched_gray = stitched_rgb.convert("L")
+#     stitched_array = np.array(stitched_gray, dtype=np.float32)
+
+#     # Normalize the grayscale array
+#     stitched_array_normalized = (stitched_array - np.min(stitched_array)) / (np.max(stitched_array) - np.min(stitched_array))
+
+#     # Save as color-mapped PNG
+#     stiffness_output_path = os.path.join(output_dir, f"{base_name}_stiffness.png")
+#     plt.imsave(stiffness_output_path, stitched_array_normalized, cmap="viridis")
+#     print(f"Stiffness colormap saved as {stiffness_output_path}")

@@ -1,0 +1,1 @@
+ImageJ-linux64 --headless --mem=40g -macro extend_canvas.ijm "/home/steve/Projects/WeaverLab/STIFMaps/IPMN_images/1865_C0_f.tiff"

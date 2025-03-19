@@ -3,6 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 temp_outputs/
+final_outputs_fullsize/
 final_outputs/
 STIFMap_images_new/
 STIFMap_images/

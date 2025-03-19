@@ -1,35 +1,36 @@
 // Define the input file
-inputFile = "/home/steve/Projects/WeaverLab/STIFMaps/27620_STIFMap_stitched.png";
+inputFile = "/home/steve/Projects/WeaverLab/STIFMaps/STIFMap_normalized_images_v1/27620_STIFMap_stitched_v1.png";
+outputFile = "/home/steve/Projects/WeaverLab/STIFMaps/final_outputs/27620_resized.tif";
+totalWidth = 5003 * 7;  // 35021
+totalHeight = 5003 * 6;  // 30018
 
-// Define the output file for the cropped image
-outputFile = "/home/steve/Projects/WeaverLab/STIFMaps/27620_cropped.tif";
-
-// Define the dimensions of the original DAPI image
-origWidth = 25922;
-origHeight = 31398;
-
-// Define the total width and height for the stitched image
-totalWidth = 5003 * 7;
-totalHeight = 5003 * 6;
-
-// Open the stitched image
+// Step 1: Open the STIFMap
+print("Step 1: Opening stitched image");
 open(inputFile);
 
-// Resize the stitched image to the total width and height
-run("Size...", "width=" + totalWidth + " height=" + totalHeight + " constrain=false");
+// Step 2: Resize the STIFMap
+print("Step 2: Resizing stitched image");
+originalWidth = getWidth();
+originalHeight = getHeight();
+print("Original dimensions: " + originalWidth + " x " + originalHeight);
+print("Target dimensions: " + totalWidth + " x " + totalHeight);
 
-// Calculate the crop region to match the original DAPI image dimensions
-left = (totalWidth - origWidth) / 2;
-top = (totalHeight - origHeight) / 2;
-width = origWidth;
-height = origHeight;
+// Calculate scaling factors
+xScale = totalWidth / originalWidth;
+yScale = totalHeight / originalHeight;
+print("Scaling factors: " + xScale + " x " + yScale);
 
-// Crop the resized image
-makeRectangle(left, top, width, height);
-run("Crop");
+// Perform the resize
+run("Scale...", "x=" + xScale + " y=" + yScale + " interpolation=Bilinear create");
+print("New dimensions: " + getWidth() + " x " + getHeight());
 
-// Save the cropped image as a TIFF file
+// Step 3: Save the resized image
+print("Step 3: Saving resized image");
 saveAs("Tiff", outputFile);
-
-// Close the image
 close();
+
+// Close original
+selectWindow(File.getName(inputFile));
+close();
+
+print("Done! Resized image saved to: " + outputFile);

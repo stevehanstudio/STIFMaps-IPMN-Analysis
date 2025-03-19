@@ -1,0 +1,10 @@
+OpenJDK 64-Bit Server VM warning: ignoring option PermSize=128m; support was removed in 8.0
+OpenJDK 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
+Step 1: Opening stitched image
+Step 2: Resizing stitched image
+Step 3: Cropping to DAPI size
+Step 4: Opening and resizing legend
+Step 5: Expanding canvas for legend
+Step 6: Pasting legend
+Step 7: Saving image
+Step 8: Done!
