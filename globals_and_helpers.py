@@ -160,14 +160,13 @@ def save_stiffness_colormap(stiffness_map, save_path):
     plt.savefig(save_path, bbox_inches='tight')
     plt.close(fig)
     
-def generate_colormap_legend(base_index):
+def gen_colormap_legend(base_name):
     """
     Generate and save a colormap legend for the raw stiffness values.
 
     Parameters:
     - base_index: Index to BASE_NAMES to determine the base name.
     """
-    base_name = BASE_NAMES[base_index]
     stiffness_dir = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
 
     # Initialize min and max values
@@ -201,9 +200,8 @@ def generate_colormap_legend(base_index):
     plt.close(fig)
     print(f"Colormap legend saved as {legend_path}")
 
-def stitch_STIFMap_tiles(base_name_index, image_format='png'):
+def stitch_STIFMap_tiles(base_name, image_format='png'):
     # Dynamically determine the number of rows and columns
-    base_name = BASE_NAMES[base_name_index]
     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
     output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}__STIFMap_stitched.png")
