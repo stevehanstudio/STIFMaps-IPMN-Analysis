@@ -1,81 +1,64 @@
-![image](https://user-images.githubusercontent.com/25675422/235388288-5c2ab9c5-de8a-4b72-b6c9-1d1f141e5b25.png)
+# STIFMaps for IPMN Tissue Analysis
 
-# Spatially Transformed Inferential Force Maps (STIFMaps)
+This project adapts the Spatially Transformed Inferential Force Maps (STIFMaps) model to analyze whole tissue slides of pancreatic IPMN tissues. The goal is to differentiate between Low Grade (LG), High Grade (HG), and Pancreatic Ductal Adenocarcinoma (PDAC) graded tissues, potentially enabling earlier detection of pancreatic cancer. This work is in progress as part of an internship at the Weaver Lab at UCSF during the Spring semester of 2025.
 
-STIFMaps predict the stiffness of breast tissue using the morphology of collagen fibers and nuclei.  
-
-
-![alt text](https://github.com/cstashko/STIFMaps/blob/main/test_cases/graphical_abstract.png)
-
-Shown is a triple negative breast tumor. Scale bar, 50 microns  
-
-Code from the manuscript: "STIFMap employs a convolutional neural network to reveal 
-spatial mechanical heterogeneity and tension-dependent activation of an epithelial 
-to mesenchymal transition within human breast cancers"
+This project is based on the original STIFMaps project: [https://github.com/cstashko/STIFMaps](https://github.com/cstashko/STIFMaps)
 
 ## Contents
 
--[Repo Contents](#repo-contents)  
--[System Requirements](#system-requirements)  
--[Installation Guide](#installation-guide)  
--[Getting Started](#getting-started)  
--[Reproducing Manuscript Results](#reproducing-manuscript-results)  
--[License](#license)  
--[Acknowledgements](#acknowledgements)  
--[Contact](#contact)  
+- [Project Overview](#project-overview)
+- [Repo Contents](#repo-contents)
+- [System Requirements](#system-requirements)
+- [Installation Guide](#installation-guide)
+- [Getting Started](#getting-started)
+- [Directories](#directories)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
+## Project Overview
+
+This project utilizes the STIFMap deep learning model to analyze DAPI and CNA35 stained images of pancreatic IPMN tissues. The process involves breaking down whole slide images into tiles, which are then analyzed by the model. The resulting predictions are used to classify the tissue grade (LG, HG, or PDAC).
 
 ## Repo Contents
--[network_training.ipynb](./network_training.ipynb): Jupyter notebook for reproducing the trained models presented in the manuscript  
--[STIFMaps.ipynb](./STIFMaps.ipynb): Jupyter notebook for creating STIFMaps out of input DAPI and collagen images using trained networks  
--[test_cases](./test_cases): Example images to use with [STIFMaps.ipynb](./STIFMaps.ipynb) to see the pipeline in action
+
+- `globals_and_helpers.py`: This file contains global variables and helper functions used throughout the project, such as file paths, model parameters, and utility functions for image processing and data handling.
+- `preprocess.ipynb`: This Jupyter Notebook focuses on the preprocessing steps required for the IPMN tissue images. It includes steps for image resizing, stain normalization, and tile extraction.
+- `gen_STIFMaps.ipynb`: This Jupyter Notebook implements the STIFMap model to the preprocessed tiles of IPMN tissues to predict the grade of tissue.
+- `../STIFMaps_dataset/trained_models/`: This directory should contain the pre-trained STIFMap models. Ensure the models are located here for the notebooks to function correctly.  You can download the STIFMap model from [https://data.mendeley.com/datasets/vw2bb5jy99/2](https://data.mendeley.com/datasets/vw2bb5jy99/2).
 
 ## System Requirements
 
-STIFMaps should run on any standard computer capable of running Jupyter and PyTorch, though 16 GB of RAM is required to enable CUDA optimization. Note that the computer must have enough RAM to support in-memory operations and the extent of memory usage depends on the size of the image that the user is trying to characterize using STIFMaps. Within [STIFMaps.ipynb](./STIFMaps.ipynb), the user may downsample the image prior to stiffness predictions to reduce memory consumption. 
-
-Running STIFMaps.ipynb on the example images provided should only take a few minutes (on a computer with 16 GB of RAM, 12 cores@1.10 GHz, and running Ubuntu 18.04). The runtime to reproduce training for one network should take about 45 minutes to an hour (using a computer with 64 GB of RAM, 16 cores@3.60 GHz, and running Ubuntu 18.04.
+STIFMaps should run on any standard computer capable of running Jupyter and PyTorch. A minimum of 16 GB of RAM is recommended, especially when utilizing CUDA for GPU acceleration. The memory requirements will depend on the size of the whole slide images being processed. Downsampling images before stiffness prediction can help reduce memory consumption.
 
 ## Installation Guide
 
-It's recommended to run STIFMaps in a designated virtual environment. Create a virtual environment in Python 3.7 or later that includes pip using the following:
-```bash
-conda create -n STIFMaps python=3.10
-conda install -n STIFMaps pip
-```
+It is highly recommended to set up a dedicated virtual environment for this project. Follow these steps to install the necessary dependencies using conda:
 
-Then enter the virtual environment and install the STIFMaps PyPI package:
-```bash
-conda activate STIFMaps
-python3 -m pip install STIFMaps
-```
+1.  **Create a conda environment:**
+
+    ```
+    conda create -n STIFMaps python=3.10
+    ```
+2.  **Activate the environment:**
+
+    ```
+    conda activate STIFMaps
+    ```
+3.  **Install pip:**
+
+    ```
+    conda install -n STIFMaps pip
+    ```
+4.  **Install the necessary packages:**
+
+    ```
+    python3 -m pip install numpy pandas scikit-image matplotlib pytorch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html
+    ```
 
 ## Getting Started
 
-Once the STIFMaps package has been installed, run the [STIFMaps.ipynb](./STIFMaps.ipynb) notebook using paired collagen and DAPI images. Example images are available via the [test_cases](./test_cases) directory. Trained models are available at https://data.mendeley.com/datasets/vw2bb5jy99/2
+1.  **Ensure Trained Models are Available:**
 
-(Optional) A mask image of zeros and ones may be used to indicate which regions of an image should be excluded from analysis  
-
-(Optional) An additional staining image may be used to compute colocalization between the stain and collagen, DAPI, and predicted stiffness  
-
-## Reproducing Manuscript Results
-
-Data for reproducing manuscript results is available via https://data.mendeley.com/datasets/vw2bb5jy99/2  
-
--**raw_squares**: The images used for training the neural networks  
--**stiffnesses.csv**: The table of ground truth stiffness values for each square used for model training. Note that stiffness values are natural-log transformed to limit the influence of ourliers  
--**trained_models**: 25 completed, trained models for use with STIFMaps.ipynb to predict elasticity values on an unknown tissue  
--**output**: Statistics regarding the training and accuracy for the trained models  
-
-To reproduce manuscript results, the Jupyter notebook used for building and training the neural networks is available via [network_training.ipynb](./network_training.ipynb). As inputs, the Jupyter notebook needs the elasticity values contained in 'stiffnesses.csv' as well as the image files from 'raw_squares'.  
-
-## License
-
-This project is covered under the **MIT License**.
-
-## Acknowledgements
-
-Code for visualizing activation and saliency maps was modified from https://github.com/raghakot/keras-vis/  
-
-## Contact
-
-Please direct any questions to cstashko@hmc.edu
+    *   Verify that the pre-trained STIFMap models are located in the `../STIFMaps_dataset/trained_models/` directory.
+        *   You can download the STIFMap model from [https://data.mendeley.com/datasets/vw2bb5jy99/2](https://data.

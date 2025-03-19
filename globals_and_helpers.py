@@ -15,7 +15,7 @@ FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
 # BASE_NAMES = ['1865']
 BASE_NAMES = ['27620', '15806', '4601', '13401', '5114', '1865']
-TILE_SIZE = 20000 
+TILE_SIZE = 5003
 
 # Helper Functions
 def normalize_image(image, lower_percentile=1, upper_percentile=99):
