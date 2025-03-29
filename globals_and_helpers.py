@@ -1,4 +1,4 @@
-import os
+﻿import os
 import re
 import numpy as np
 import pandas as pd
@@ -19,7 +19,7 @@ QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['4601', '7002', '5114', '8761']
+BASE_NAMES = ['7002']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 TILE_SIZE = 5003
 
@@ -166,13 +166,13 @@ def save_stiffness_colormap(stiffness_map, save_path):
     # Save and close
     plt.savefig(save_path, bbox_inches='tight')
     plt.close(fig)
-    
+
 def gen_colormap_legend(base_name):
     """
     Generate and save a colormap legend for the raw stiffness values.
 
     Parameters:
-    - base_index: Index to BASE_NAMES to determine the base name.
+    - base_name: The base name to determine the directory.
     """
     stiffness_dir = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
 
@@ -180,15 +180,39 @@ def gen_colormap_legend(base_name):
     min_value = float('inf')
     max_value = float('-inf')
 
+    # Initialize a counter for the number of .npy files found
+    npy_file_count = 0
+
     # Find all .npy files in the directory
     for file_name in os.listdir(stiffness_dir):
         if file_name.endswith('.npy'):
             npy_path = os.path.join(stiffness_dir, file_name)
-            stiffness_map = np.load(npy_path)
+            try:
+                stiffness_map = np.load(npy_path)
 
-            # Update min and max values
-            min_value = min(min_value, np.min(stiffness_map))
-            max_value = max(max_value, np.max(stiffness_map))
+                # Update min and max values
+                current_min = np.min(stiffness_map)
+                current_max = np.max(stiffness_map)
+                min_value = min(min_value, current_min)
+                max_value = max(max_value, current_max)
+
+                # Increment the counter
+                npy_file_count += 1
+            except FileNotFoundError:
+                print(f"Warning: Could not find .npy file at {npy_path}")
+            except Exception as e:
+                print(f"Warning: Error loading .npy file at {npy_path}: {e}")
+
+    # Print the number of .npy files found
+    print(f"Found {npy_file_count} .npy files in {stiffness_dir}")
+
+    # Print the smallest min_value and largest max_value found
+    if npy_file_count > 0:
+        print(f"Smallest min_value found: {min_value}")
+        print(f"Largest max_value found: {max_value}")
+    else:
+        print("No .npy files found, so no min/max values to display.")
+        return  # Exit the function if no .npy files are found
 
     # Create a dummy image for the colormap
     fig, ax = plt.subplots(figsize=(2, 6))
@@ -201,6 +225,38 @@ def gen_colormap_legend(base_name):
     cbar = fig.colorbar(dummy_img, ax=fig.add_subplot(111))
     cbar.set_label("Stiffness (Young's Modulus) [kPa]", fontsize=14)
 
+    # Generate intermediate tick values (whole numbers)
+    ticks = [min_value]
+    num_intermediate_ticks = 8
+    if max_value > min_value:
+        import math
+        start_val = math.ceil(min_value)
+        end_val = math.floor(max_value)
+        intermediate_ticks = [val for val in range(start_val, end_val + 1)]
+
+        # Select up to 8 intermediate ticks
+        if len(intermediate_ticks) <= num_intermediate_ticks:
+            ticks.extend(intermediate_ticks)
+        else:
+            step = max(1, len(intermediate_ticks) // num_intermediate_ticks)
+            ticks.extend(intermediate_ticks[::step][:num_intermediate_ticks])
+
+    ticks.append(max_value)
+    unique_ticks = sorted(list(set(ticks))) # Ensure unique and sorted ticks
+
+    # Format tick labels
+    tick_labels = []
+    for tick in unique_ticks:
+        if tick == min_value or tick == max_value:
+            tick_labels.append(f"{tick:.3g}") # 3 significant digits for bounds
+        elif tick == int(tick): # Check if it's a whole number
+            tick_labels.append(f"{tick:.2g}") # 2 significant digits for whole numbers
+        else:
+            tick_labels.append("") # Don't label non-whole intermediate ticks
+
+    cbar.set_ticks(unique_ticks)
+    cbar.set_ticklabels(tick_labels)
+
     # Save the colormap legend
     legend_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_stiffness_colormap_legend.png")
     plt.savefig(legend_path, bbox_inches='tight')
@@ -208,6 +264,9 @@ def gen_colormap_legend(base_name):
     print(f"Colormap legend saved as {legend_path}")
 
 def stitch_STIFMap_tiles(base_name, image_format='png'):
+    os.makedirs(TEMP_OUTPUTS_DIR, exist_ok=True)
+    os.makedirs(FINAL_OUTPUTS_DIR, exist_ok=True)
+
     # Dynamically determine the number of rows and columns
     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
@@ -503,58 +562,3 @@ def gen_report(base_name):
     plt.savefig(output_image_path, format='jpeg', bbox_inches='tight', dpi=300)
 
     print(f"Summary table saved to: {output_image_path}")
-
-
-# def save_stiffness_colormap_legend(
-#     cmap="viridis",
-#     min_value=0,
-#     max_value=54286,
-#     label="Stiffness (Young's Modulus) [kPa]",
-#     save_path="stiffness_color_map_legend.png"
-# ):
-#     fig, ax = plt.subplots(figsize=(2, 6))  # Tall, narrow figure
-    
-#     # Create a dummy colormap
-#     gradient = np.linspace(0, 1, 256).reshape(-1, 1)
-#     ax.imshow(gradient, aspect='auto', cmap=cmap)
-    
-#     # Hide axes
-#     ax.set_axis_off()
-    
-#     # Add colorbar
-#     norm = plt.Normalize(vmin=min_value, vmax=max_value)
-#     cbar = fig.colorbar(
-#         plt.cm.ScalarMappable(norm=norm, cmap=cmap),
-#         ax=ax,
-#         orientation='vertical',
-#         fraction=0.1,
-#         pad=0.05
-#     )
-#     cbar.set_label(label, fontsize=14, rotation=90)
-    
-#     plt.tight_layout()
-#     plt.savefig(save_path, dpi=300, bbox_inches='tight', transparent=False)
-#     plt.close()
-#     print(f"Legend saved to {save_path}")
-
-# def save_stiffness_colormap(stitched_image_path, base_name, output_dir=FINAL_OUTPUTS_DIR):
-#     """
-#     Converts the stitched image to a normalized grayscale colormap and saves it as {base_name}_stiffness.png.
-    
-#     Args:
-#         stitched_image_path (str): Path to the stitched image (RGB).
-#         base_name (str): Base name for naming the output.
-#         output_dir (str): Directory where the stiffness colormap will be saved.
-#     """
-#     # Load stitched image and convert to grayscale
-#     stitched_rgb = Image.open(stitched_image_path)
-#     stitched_gray = stitched_rgb.convert("L")
-#     stitched_array = np.array(stitched_gray, dtype=np.float32)
-
-#     # Normalize the grayscale array
-#     stitched_array_normalized = (stitched_array - np.min(stitched_array)) / (np.max(stitched_array) - np.min(stitched_array))
-
-#     # Save as color-mapped PNG
-#     stiffness_output_path = os.path.join(output_dir, f"{base_name}_stiffness.png")
-#     plt.imsave(stiffness_output_path, stitched_array_normalized, cmap="viridis")
-#     print(f"Stiffness colormap saved as {stiffness_output_path}")

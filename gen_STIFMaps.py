@@ -14,9 +14,10 @@ from globals_and_helpers import (
     get_base_name,
     check_image_dimensions,
     gen_STIFMap_tile_path,
-    save_stiffness_colormap,
+    # save_stiffness_colormap,
     stitch_STIFMap_tiles,
     # stitch_images,
+    gen_colormap_legend,
 )
 
 from STIFMaps import STIFMap_generation
@@ -181,8 +182,9 @@ def gen_STIFMap(base_name):
             )
     
     stitched_output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
-    stitch_STIFMap_tiles(stitched_output_path, base_name, image_format='png')
-    save_stiffness_colormap(stitched_output_path, base_name)
-            
+    stitch_STIFMap_tiles(base_name)
+    # save_stiffness_colormap(stitched_output_path, base_name)
+    gen_colormap_legend(base_name)
+
 for base_name in BASE_NAMES:
     gen_STIFMap(base_name=base_name)
