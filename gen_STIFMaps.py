@@ -15,9 +15,8 @@ from globals_and_helpers import (
     check_image_dimensions,
     gen_STIFMap_tile_path,
     save_stiffness_colormap,
-    # stitch_images,
     stitch_STIFMap_tiles,
-    gen_colormap_legend,
+    # stitch_images,
 )
 
 from STIFMaps import STIFMap_generation
@@ -101,23 +100,6 @@ def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, s
 def is_tile_completed(output_path):
     return os.path.exists(output_path)
 
-# dapi_path, collagen_path = get_dapi_and_collagen_paths(
-#     base_name=BASE_NAMES[0], orig_image_dir=ORIG_IMAGE_DIR
-# )
-# print(f"dapi_path={dapi_path}, collagen_path={collagen_path}")
-# gen_STIFMap_tile(
-#     # dapi_path=dapi_path,
-#     # collagen_path=collagen_path,
-#     dapi_path='/home/steve/Projects/WeaverLab/STIFMaps/temp_outputs/27620/IPMN_tiles/27620_C0_0_0.tif',
-#     collagen_path='/home/steve/Projects/WeaverLab/STIFMaps/temp_outputs/27620/IPMN_tiles/27620_C1_0_0.tif',
-#     name='test',
-#     step=STIFMap_STEP,
-#     models=models,
-#     batch_size=STIFMap_BATCH_SIZE,
-#     square_side=STIFMap_SQUARE_SIDE,
-#     check_existing=True  # Set to True to check if the file already exists
-# )
-
 def get_base_file_name(file_path):
     # Extract the file name without the extension
     file_name = os.path.splitext(os.path.basename(file_path))[0]
@@ -199,11 +181,8 @@ def gen_STIFMap(base_name):
             )
     
     stitched_output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
-    stitch_images(stitched_output_path, base_name, image_format='png')
+    stitch_STIFMap_tiles(stitched_output_path, base_name, image_format='png')
     save_stiffness_colormap(stitched_output_path, base_name)
-
-    stitch_STIFMap_tiles(base_name)
-    gen_colormap_legend(base_name)
-
+            
 for base_name in BASE_NAMES:
     gen_STIFMap(base_name=base_name)
