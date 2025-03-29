@@ -13,8 +13,8 @@ MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-# BASE_NAMES = ['1865']
-BASE_NAMES = ['27620', '15806', '4601', '13401', '5114', '1865']
+BASE_NAMES = ['4601', '7002', '5114', '8761']
+# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 TILE_SIZE = 5003
 
 # Helper Functions
@@ -55,7 +55,8 @@ def get_tile_base_name(input_path):
 def check_image_dimensions(image_path):
     try:
         with tifffile.TiffFile(image_path) as tif:
-            width, height = tif.pages[0].shape[:2]
+            height, width = tif.pages[0].shape[:2]
+            # width, height = tif.pages[0].shape[:2]
             print(f"File: {os.path.basename(image_path)}, Dimensions: {width}x{height}")
             return width, height
     except Exception as e:
@@ -204,7 +205,7 @@ def stitch_STIFMap_tiles(base_name, image_format='png'):
     # Dynamically determine the number of rows and columns
     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
-    output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}__STIFMap_stitched.png")
+    output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
     
     row_col_map = {}
     for file in os.listdir(STIFMaps_directory):
@@ -269,6 +270,80 @@ def stitch_STIFMap_tiles(base_name, image_format='png'):
 
     stitched_image.save(output_filename)
     print(f"Stitched image saved as {output_filename}")
+
+def calc_crop_dimensions(base_name, image_format='png'):
+    """
+    Calculate the dimensions for cropping the STIFMap image based on a scaling factor.
+
+    Parameters:
+    - base_name: The base name used to construct file paths.
+    - image_format: The format of the image file (default is 'png').
+
+    Returns:
+    - cropped_width: The calculated width for cropping, rounded to the nearest integer.
+    - cropped_height: The calculated height for cropping, rounded to the nearest integer.
+    """
+    STIFMap_tile_image_path = os.path.join(TEMP_OUTPUTS_DIR, base_name, 'STIFMap_tiles', f'{base_name}_0_0.png')
+    # STIFMap_tile_image_path = os.path.join(TEMP_OUTPUTS_DIR, base_name, 'STIFMap_tiles', f'{base_name}_STIFMap_0_0.png')
+
+    # Calculate the scaling factor
+    try:
+        with Image.open(STIFMap_tile_image_path) as tile_image:
+            scaling_factor = TILE_SIZE / tile_image.size[0]
+    except FileNotFoundError:
+        print(f"Error: Tile image not found at {STIFMap_tile_image_path}")
+        return None, None
+    
+    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
+    orig_width, orig_height = check_image_dimensions(dapi_path)
+
+    # Define the path to the STIFMap image file
+    STIFMap_image_path = os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_stitched.png')
+
+    # Load the STIFMap image
+    with Image.open(STIFMap_image_path) as STIFMap_image:
+        # Get the dimensions of the STIFMap image
+        width, height = STIFMap_image.size
+
+    # Calculate the dimensions for cropping
+    cropped_width = round(orig_width / scaling_factor)
+    cropped_height = round(orig_height / scaling_factor)
+
+    print(f"Original DAPI Image Dimensions: {orig_width}x{orig_height}")
+    print(f"Original STIFMap Image Dimensions: {width}x{height}")
+    print(f"Cropped Image Dimensions: {cropped_width}x{cropped_height}")
+
+    print(f"orig_width: {orig_width}, orig_height: {orig_height}, scaling_factor: {scaling_factor}")
+
+    return cropped_width, cropped_height
+
+def crop_STIFMap(base_name, image_format='png'):
+
+    # Define the path to the image file
+    image_path = os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_stitched.png')
+
+    # Load the original image
+    original_image = Image.open(image_path)
+
+    # Define the dimensions for cropping
+    # cropped_width = 2209
+    # cropped_height = 1824
+    cropped_width, cropped_height = calc_crop_dimensions(base_name)
+
+    # Crop the image from the top-left corner
+    cropped_image = original_image.crop((0, 0, cropped_width, cropped_height))
+
+    # Convert the cropped image to grayscale
+    gray_image = cropped_image.convert("L")
+
+    # Define the path and name for the saved image
+    save_path = os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_stitched_cropped_gray.png')
+ 
+    # Save the grayscale image as PNG
+    gray_image.save(save_path)
+
+    print(f"Grayscale image saved to {save_path}")
+
 
 # def save_stiffness_colormap_legend(
 #     cmap="viridis",

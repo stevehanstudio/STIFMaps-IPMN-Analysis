@@ -15,7 +15,7 @@ from globals_and_helpers import (
     check_image_dimensions,
     gen_STIFMap_tile_path,
     save_stiffness_colormap,
-    stitch_images,
+    # stitch_images,
     stitch_STIFMap_tiles,
     gen_colormap_legend,
 )
