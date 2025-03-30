@@ -3,5 +3,5 @@ from globals_and_helpers import (
     gen_report,
 )
 
-scale_annotations("7002")
+scale_annotations("4601")
 # gen_report("7002")
