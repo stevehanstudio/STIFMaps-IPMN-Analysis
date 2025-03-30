@@ -147,14 +147,7 @@ def gen_STIFMap(base_name):
     num_rows = len(valid_rows)
     num_cols = max_cols
 
-    # print("Row to Columns mapping:", row_col_map)
-    # print("Valid rows with full columns:", valid_rows)
-    
     print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
-    
-    # Create a list of file names for C0 and C1 tiles
-    # C0_files = [f"{base_name_C0}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
-    # C1_files = [f"{base_name_C1}_{i}_{j}.tif" for i in range(num_rows) for j in range(num_cols)]
     
     # Main: Loop through all the tiled C0 and C1 images and pass each one to run_STIFMap()
     for row in valid_rows:  # Iterate only over rows with full columns
