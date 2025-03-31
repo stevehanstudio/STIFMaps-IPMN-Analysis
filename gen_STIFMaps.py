@@ -54,10 +54,22 @@ STIFMap_BATCH_SIZE = 100
 print('Step size is ' + str(STIFMap_STEP) + ' pixels')
 print('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')
 
-# Function to generate and save the STIFMap
 def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):
+    """
+    Generate and save the STIFMap for a given tile.
+
+    Parameters:
+    - dapi_path: Path to the DAPI image.
+    - collagen_path: Path to the collagen image.
+    - name: Name associated with the STIFMap.
+    - step: Step size for processing.
+    - models: Models used for STIFMap generation.
+    - batch_size: Batch size for processing.
+    - square_side: Side length of the square for processing.
+    - check_existing: Flag to check if the tile has already been processed.
+    """
     output_path = gen_STIFMap_tile_path(dapi_path)
-    
+
     # Check if the tile has already been processed
     if check_existing and os.path.exists(output_path):
         print(f"Skipping already processed tile: {dapi_path} and {collagen_path}")
@@ -66,13 +78,13 @@ def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, s
     start_time = time.perf_counter()
 
     z_out = STIFMap_generation.generate_STIFMap(
-        dapi=dapi_path, 
-        collagen=collagen_path, 
-        name=name, 
-        step=step, 
+        dapi=dapi_path,
+        collagen=collagen_path,
+        name=name,
+        step=step,
         models=models,
-        mask=False, 
-        batch_size=batch_size, 
+        mask=False,
+        batch_size=batch_size,
         square_side=square_side,
         save_dir=False
     )
@@ -80,22 +92,63 @@ def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, s
     end_time = time.perf_counter()
     print("Elapsed time:", convert_seconds_to_hms(end_time - start_time))
 
+    # Calculate the mean output image along the first axis
     output_image = np.mean(z_out, axis=0)
-
-    global_min = np.min(output_image)
-    global_max = np.max(output_image)
-    output_image_normalized = (output_image - global_min) / (global_max - global_min)
 
     # Ensure the output directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    plt.imsave(output_path, output_image_normalized, cmap="viridis")
+    # Save the output image without normalization
+    plt.imsave(output_path, output_image, cmap="viridis")
     print(f"Saved image: {output_path}")
 
     # Save the raw stiffness values as a NumPy array
     stiffness_values_path = output_path.replace(".png", ".npy")
     np.save(stiffness_values_path, output_image)
     print(f"Saved stiffness values: {stiffness_values_path}")
+
+# Function to generate and save the STIFMap
+# def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):
+#     output_path = gen_STIFMap_tile_path(dapi_path)
+    
+#     # Check if the tile has already been processed
+#     if check_existing and os.path.exists(output_path):
+#         print(f"Skipping already processed tile: {dapi_path} and {collagen_path}")
+#         return
+
+#     start_time = time.perf_counter()
+
+#     z_out = STIFMap_generation.generate_STIFMap(
+#         dapi=dapi_path, 
+#         collagen=collagen_path, 
+#         name=name, 
+#         step=step, 
+#         models=models,
+#         mask=False, 
+#         batch_size=batch_size, 
+#         square_side=square_side,
+#         save_dir=False
+#     )
+
+#     end_time = time.perf_counter()
+#     print("Elapsed time:", convert_seconds_to_hms(end_time - start_time))
+
+#     output_image = np.mean(z_out, axis=0)
+
+#     global_min = np.min(output_image)
+#     global_max = np.max(output_image)
+#     output_image_normalized = (output_image - global_min) / (global_max - global_min)
+
+#     # Ensure the output directory exists
+#     os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+#     plt.imsave(output_path, output_image_normalized, cmap="viridis")
+#     print(f"Saved image: {output_path}")
+
+#     # Save the raw stiffness values as a NumPy array
+#     stiffness_values_path = output_path.replace(".png", ".npy")
+#     np.save(stiffness_values_path, output_image)
+#     print(f"Saved stiffness values: {stiffness_values_path}")
 
 # Function to check if a tile has already been processed
 def is_tile_completed(output_path):
