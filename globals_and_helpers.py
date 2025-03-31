@@ -19,7 +19,7 @@ QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['27620']
+BASE_NAMES = ['8761', '13401']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 TILE_SIZE = 5003
 
