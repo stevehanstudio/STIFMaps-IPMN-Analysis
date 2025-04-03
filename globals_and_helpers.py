@@ -19,7 +19,7 @@ QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['4601', '7002', '8761', '5114', '13401', '6488', '6488', '5789', '15806', '9074']
+BASE_NAMES = ['27620', '7002']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 TILE_SIZE = 5003
 
@@ -263,15 +263,15 @@ def gen_colormap_legend(base_name):
     plt.close(fig)
     print(f"Colormap legend saved as {legend_path}")
 
-def stitch_STIFMap_tiles(base_name, image_format='png'):
+def stitch_STIFMap_tiles(base_name, file_extension='npy'):
     os.makedirs(TEMP_OUTPUTS_DIR, exist_ok=True)
     os.makedirs(FINAL_OUTPUTS_DIR, exist_ok=True)
 
     # Dynamically determine the number of rows and columns
-    tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
+    tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{file_extension}")
     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
     output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
-    
+
     row_col_map = {}
     for file in os.listdir(STIFMaps_directory):
         match = tile_pattern.match(file)
@@ -290,51 +290,129 @@ def stitch_STIFMap_tiles(base_name, image_format='png'):
 
     print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
 
-    # Determine image dimensions from the first available .png tile
-    image_width = image_height = None
+    # Determine tile dimensions from the first available .npy file
+    tile_height = tile_width = None
     for row in range(num_rows):
         for col in range(num_cols):
-            image_filename = f"{base_name}_{row}_{col}.{image_format}"
-            image_path = os.path.join(STIFMaps_directory, image_filename)
-            if os.path.exists(image_path):
-                try:
-                    with Image.open(image_path) as image:
-                        image_width, image_height = image.size
-                    break
-                except Exception as e:
-                    print(f"Error opening {image_path}: {e}")
-        if image_width is not None:
+            file_name = f"{base_name}_{row}_{col}.{file_extension}"
+            file_path = os.path.join(STIFMaps_directory, file_name)
+            if os.path.exists(file_path):
+                tile = np.load(file_path)
+                tile_height, tile_width = tile.shape
+                break
+        if tile_height is not None:
             break
 
-    if image_width is None:
-        raise ValueError("No valid .png image files found to determine dimensions.")
+    if tile_height is None:
+        raise ValueError("No valid .npy files found to determine dimensions.")
 
-    stitched_width = num_cols * image_width
-    stitched_height = num_rows * image_height
-    stitched_image = Image.new('RGB', (stitched_width, stitched_height), color='white')
+    # Create an empty array for the stitched image
+    stitched_height = num_rows * tile_height
+    stitched_width = num_cols * tile_width
+    stitched_image = np.zeros((stitched_height, stitched_width))
 
+    # Stitch the tiles together
     for row in range(num_rows):
         for col in range(num_cols):
-            image_filename = f"{base_name}_{row}_{col}.{image_format}"
-            image_path = os.path.join(STIFMaps_directory, image_filename)
+            file_name = f"{base_name}_{row}_{col}.{file_extension}"
+            file_path = os.path.join(STIFMaps_directory, file_name)
 
-            if os.path.exists(image_path):
-                try:
-                    image = Image.open(image_path)
-                except Exception as e:
-                    print(f"Error opening {image_path}: {e}")
-                    image = Image.new('RGB', (image_width, image_height), color='white')
-                    print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+            if os.path.exists(file_path):
+                tile = np.load(file_path)
             else:
-                image = Image.new('RGB', (image_width, image_height), color='white')
-                print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+                tile = np.zeros((tile_height, tile_width))
+                print(f"Missing tile: {file_name}. Replacing with a zero tile.")
 
-            x = col * image_width
-            y = row * image_height
-            stitched_image.paste(image, (x, y))
+            x = col * tile_width
+            y = row * tile_height
+            stitched_image[y:y + tile_height, x:x + tile_width] = tile
 
-    stitched_image.save(output_filename)
-    print(f"Stitched image saved as {output_filename}")
+    # Calculate the conversion factor
+    min_val = np.min(stitched_image)
+    max_val = np.max(stitched_image)
+    conversion_factor = 255 / (max_val - min_val)
+    print(f"Conversion factor: {conversion_factor}")
+
+    # Normalize the stitched image to the range [0, 255]
+    normalized_image = ((stitched_image - min_val) / (max_val - min_val) * 255).astype(np.uint8)
+
+    # Save the grayscale image
+    plt.imsave(output_filename, normalized_image, cmap='gray')
+    print(f"Stitched grayscale image saved as {output_filename}")
+
+
+# def stitch_STIFMap_tiles(base_name, image_format='png'):
+#     os.makedirs(TEMP_OUTPUTS_DIR, exist_ok=True)
+#     os.makedirs(FINAL_OUTPUTS_DIR, exist_ok=True)
+
+#     # Dynamically determine the number of rows and columns
+#     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
+#     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
+#     output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
+    
+#     row_col_map = {}
+#     for file in os.listdir(STIFMaps_directory):
+#         match = tile_pattern.match(file)
+#         if match:
+#             row, col = map(int, match.groups())
+#             row_col_map.setdefault(row, set()).add(col)
+
+#     if not row_col_map:
+#         raise ValueError("No matching files found in the directory.")
+
+#     # Correctly determine the number of rows and columns
+#     max_row = max(row_col_map.keys())
+#     max_col = max(max(cols) for cols in row_col_map.values())
+#     num_rows = max_row + 1
+#     num_cols = max_col + 1
+
+#     print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
+
+#     # Determine image dimensions from the first available .png tile
+#     image_width = image_height = None
+#     for row in range(num_rows):
+#         for col in range(num_cols):
+#             image_filename = f"{base_name}_{row}_{col}.{image_format}"
+#             image_path = os.path.join(STIFMaps_directory, image_filename)
+#             if os.path.exists(image_path):
+#                 try:
+#                     with Image.open(image_path) as image:
+#                         image_width, image_height = image.size
+#                     break
+#                 except Exception as e:
+#                     print(f"Error opening {image_path}: {e}")
+#         if image_width is not None:
+#             break
+
+#     if image_width is None:
+#         raise ValueError("No valid .png image files found to determine dimensions.")
+
+#     stitched_width = num_cols * image_width
+#     stitched_height = num_rows * image_height
+#     stitched_image = Image.new('RGB', (stitched_width, stitched_height), color='white')
+
+#     for row in range(num_rows):
+#         for col in range(num_cols):
+#             image_filename = f"{base_name}_{row}_{col}.{image_format}"
+#             image_path = os.path.join(STIFMaps_directory, image_filename)
+
+#             if os.path.exists(image_path):
+#                 try:
+#                     image = Image.open(image_path)
+#                 except Exception as e:
+#                     print(f"Error opening {image_path}: {e}")
+#                     image = Image.new('RGB', (image_width, image_height), color='white')
+#                     print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+#             else:
+#                 image = Image.new('RGB', (image_width, image_height), color='white')
+#                 print(f"Missing tile: {image_filename}. Replacing with a white tile.")
+
+#             x = col * image_width
+#             y = row * image_height
+#             stitched_image.paste(image, (x, y))
+
+#     stitched_image.save(output_filename)
+#     print(f"Stitched image saved as {output_filename}")
 
 def calc_crop_dimensions(base_name, image_format='png'):
     """
@@ -574,7 +652,8 @@ def filter_measurements(base_name):
         pd.DataFrame: Filtered DataFrame with specified columns, renamed column, and sorted by Classification.
     """
     # Construct the input and output file paths using the base name
-    input_file = f"{QUPATH_PROJECT_DIR}/{base_name}_measurements.csv"
+    # input_file = f"{QUPATH_PROJECT_DIR}/{base_name}_measurements.csv"
+    input_file = f"{FINAL_OUTPUTS_DIR}/{base_name}_measurements.csv"
     output_file = f"{FINAL_OUTPUTS_DIR}/{base_name}_filtered_measurements.csv"
 
     # Read the CSV file
