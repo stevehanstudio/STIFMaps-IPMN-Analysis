@@ -3,5 +3,6 @@ from globals_and_helpers import (
     gen_report,
 )
 
-scale_annotations("4601")
+scale_annotations("27620", resized=True)
+# scale_annotations("4601")
 # gen_report("7002")

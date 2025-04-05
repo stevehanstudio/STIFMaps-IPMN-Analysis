@@ -54,31 +54,59 @@ STIFMap_BATCH_SIZE = 100
 print('Step size is ' + str(STIFMap_STEP) + ' pixels')
 print('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')
 
+# dap_files = [
+#     "15806_C0-1.tif", 
+#     "15806_C0-2.tif",
+#     "15806_C0-3.tif",
+#     "15806_C0-4.tif",
+# ]
+
+# collagen_files = [
+#     "15806_C1-1.tif",
+#     "15806_C1-2.tif",
+#     "15806_C1-3.tif",
+#     "15806_C1-4.tif",
+# ]
+
+# output_files = [
+#     "15806-1_STIFMap.png", 
+#     "15806-2_STIFMap.png",
+#     "15806-3_STIFMap.png",
+#     "15806-4_STIFMap.png",
+# ]
+
 dap_files = [
-    "15806_C0-1.tif", 
-    "15806_C0-2.tif",
-    "15806_C0-3.tif",
-    "15806_C0-4.tif",
+    # "27620_C0_square_image.tif", 
+    # "27620_C0_resized.tif", 
+    # "7002_C0_square_image.tif", 
+    # "7002_C0_resized.tif", 
+    "4601_C0_resized.tif", 
 ]
 
 collagen_files = [
-    "15806_C1-1.tif",
-    "15806_C1-2.tif",
-    "15806_C1-3.tif",
-    "15806_C1-4.tif",
+    # "27620_C1_square_image.tif",
+    # "27620_C1_resized.tif",
+    # "7002_C1_square_image.tif",
+    # "7002_C1_resized.tif",
+    "4601_C1_resized.tif",
 ]
 
 output_files = [
-    "15806-1_STIFMap.png", 
-    "15806-2_STIFMap.png",
-    "15806-3_STIFMap.png",
-    "15806-4_STIFMap.png",
+    # "27620_STIFMap_square.png", 
+    # "27620_STIFMap_resized.png", 
+    # "7002_STIFMap_square.png", 
+    # "7002_STIFMap_resized.png", 
+    "4601_STIFMap_resized.png", 
 ]
+
 
 for i in range(len(dap_files)):
     start_time = time.perf_counter()
-    dapi_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",dap_files[i])
-    collagen_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",collagen_files[i])
+    base_name = get_base_name(dap_files[i])
+    # dapi_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",dap_files[i])
+    # collagen_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",collagen_files[i])
+    dapi_path = os.path.join(PROJECT_DIR, "temp_outputs", base_name, dap_files[i])
+    collagen_path = os.path.join(PROJECT_DIR, "temp_outputs", base_name, collagen_files[i])
     output_path = os.path.join(FINAL_OUTPUTS_DIR, output_files[i])
 
    # Check if the tile has already been processed
@@ -87,17 +115,21 @@ for i in range(len(dap_files)):
         exit
     print(f"Processing: {dapi_path}, {collagen_path}")
 
-    z_out = STIFMap_generation.generate_STIFMap(
-        dapi=dapi_path,
-        collagen=collagen_path,
-        name="test",
-        step=STIFMap_STEP,
-        models=models,
-        mask=False,
-        batch_size=STIFMap_BATCH_SIZE,
-        square_side=STIFMap_SQUARE_SIDE,
-        save_dir=False
-    )
+    try:
+        z_out = STIFMap_generation.generate_STIFMap(
+            dapi=dapi_path,
+            collagen=collagen_path,
+            name="test",
+            step=STIFMap_STEP,
+            models=models,
+            mask=False,
+            batch_size=STIFMap_BATCH_SIZE,
+            square_side=STIFMap_SQUARE_SIDE,
+            save_dir=False
+        )
+    except Exception as e:  # Catch all exceptions
+        print(f"Error occurred: {e}.  Continuing with next image")
+        continue  # Skip the current iteration and move to the next item
 
     end_time = time.perf_counter()
     print("Elapsed time:", convert_seconds_to_hms(end_time - start_time))
