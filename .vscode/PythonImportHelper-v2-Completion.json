@@ -1,0 +1,1358 @@
+[
+    {
+        "label": "IJ",
+        "importPath": "ij",
+        "description": "ij",
+        "isExtraImport": true,
+        "detail": "ij",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "MODELS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "FINAL_OUTPUTS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TILE_SIZE",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_NAMES",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_image",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "plot_histogram",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_dapi_and_collagen_paths",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "convert_seconds_to_hms",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_base_name",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "check_image_dimensions",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_STIFMap_tile_path",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "# save_stiffness_colormap",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "stitch_STIFMap_tiles",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "# stitch_images",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_colormap_legend",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TILE_SIZE",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_NAMES",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_image",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "plot_histogram",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_dapi_and_collagen_paths",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_tile_base_name",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "check_image_dimensions",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "MODELS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "FINAL_OUTPUTS_DIR",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TILE_SIZE",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_NAMES",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_image",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "plot_histogram",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_dapi_and_collagen_paths",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "convert_seconds_to_hms",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_base_name",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "check_image_dimensions",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_STIFMap_tile_path",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "# save_stiffness_colormap",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "stitch_STIFMap_tiles",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "# stitch_images",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_colormap_legend",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "scale_annotations",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_report",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_generation",
+        "importPath": "STIFMaps",
+        "description": "STIFMaps",
+        "isExtraImport": true,
+        "detail": "STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_generation",
+        "importPath": "STIFMaps",
+        "description": "STIFMaps",
+        "isExtraImport": true,
+        "detail": "STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "get_step",
+        "importPath": "STIFMaps.misc",
+        "description": "STIFMaps.misc",
+        "isExtraImport": true,
+        "detail": "STIFMaps.misc",
+        "documentation": {}
+    },
+    {
+        "label": "get_step",
+        "importPath": "STIFMaps.misc",
+        "description": "STIFMaps.misc",
+        "isExtraImport": true,
+        "detail": "STIFMaps.misc",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "importPath": "skimage",
+        "description": "skimage",
+        "isExtraImport": true,
+        "detail": "skimage",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "importPath": "skimage",
+        "description": "skimage",
+        "isExtraImport": true,
+        "detail": "skimage",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "spearmanr",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "spearmanr",
+        "importPath": "scipy.stats",
+        "description": "scipy.stats",
+        "isExtraImport": true,
+        "detail": "scipy.stats",
+        "documentation": {}
+    },
+    {
+        "label": "interpolate",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "interpolate",
+        "importPath": "scipy",
+        "description": "scipy",
+        "isExtraImport": true,
+        "detail": "scipy",
+        "documentation": {}
+    },
+    {
+        "label": "tifffile",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tifffile",
+        "description": "tifffile",
+        "detail": "tifffile",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "shape",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "mapping",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "Polygon",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "shape",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "mapping",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "Polygon",
+        "importPath": "shapely.geometry",
+        "description": "shapely.geometry",
+        "isExtraImport": true,
+        "detail": "shapely.geometry",
+        "documentation": {}
+    },
+    {
+        "label": "scale",
+        "importPath": "shapely.affinity",
+        "description": "shapely.affinity",
+        "isExtraImport": true,
+        "detail": "shapely.affinity",
+        "documentation": {}
+    },
+    {
+        "label": "scale",
+        "importPath": "shapely.affinity",
+        "description": "shapely.affinity",
+        "isExtraImport": true,
+        "detail": "shapely.affinity",
+        "documentation": {}
+    },
+    {
+        "label": "CellExecutionError",
+        "importPath": "nbconvert.preprocessors",
+        "description": "nbconvert.preprocessors",
+        "isExtraImport": true,
+        "detail": "nbconvert.preprocessors",
+        "documentation": {}
+    },
+    {
+        "label": "NotebookClient",
+        "importPath": "nbclient",
+        "description": "nbclient",
+        "isExtraImport": true,
+        "detail": "nbclient",
+        "documentation": {}
+    },
+    {
+        "label": "read",
+        "importPath": "nbformat",
+        "description": "nbformat",
+        "isExtraImport": true,
+        "detail": "nbformat",
+        "documentation": {}
+    },
+    {
+        "label": "write",
+        "importPath": "nbformat",
+        "description": "nbformat",
+        "isExtraImport": true,
+        "detail": "nbformat",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize",
+        "description": "ImageJ scripts.resize",
+        "peekOfCode": "PROJECT_DIR = \"B:/Projects/WeaverLab/STIFMaps-IPMN-Analysis/\"\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)",
+        "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize",
+        "description": "ImageJ scripts.resize",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder",
+        "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize",
+        "description": "ImageJ scripts.resize",
+        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder\nimage_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]",
+        "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "output_folder",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize",
+        "description": "ImageJ scripts.resize",
+        "peekOfCode": "output_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder\nimage_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]\nprint(\"Found \" + str(len(image_files)) + \" image(s) to process.\")\n# Loop through each image\nfor image_name in image_files:\n    print(\"Processing: \" + image_name)",
+        "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "image_files",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize",
+        "description": "ImageJ scripts.resize",
+        "peekOfCode": "image_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]\nprint(\"Found \" + str(len(image_files)) + \" image(s) to process.\")\n# Loop through each image\nfor image_name in image_files:\n    print(\"Processing: \" + image_name)\n    # Open image\n    imp = IJ.openImage(os.path.join(ORIG_IMAGE_DIR, image_name))\n    if imp is None:\n        print(\"Skipping \" + image_name + \", failed to open.\")\n        continue  # Skip if the image couldn't be opened",
+        "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "annotations_path",
+        "kind": 5,
+        "importPath": "convert_csv_to_geojson",
+        "description": "convert_csv_to_geojson",
+        "peekOfCode": "annotations_path = r'C:\\Users\\steve\\Projects\\WeaverLab\\analysis_panel_1\\27620_annotations.csv'\nannotations = pd.read_csv(annotations_path)\nfeatures = []\nfor _, row in annotations.iterrows():\n    try:\n        # Handle ROI based on its type\n        roi_type = row['ROI']\n        classification = row['Classification']\n        name = row['Name']\n        if roi_type.startswith('Polygon'):  # Example: \"Polygon\" type",
+        "detail": "convert_csv_to_geojson",
+        "documentation": {}
+    },
+    {
+        "label": "annotations",
+        "kind": 5,
+        "importPath": "convert_csv_to_geojson",
+        "description": "convert_csv_to_geojson",
+        "peekOfCode": "annotations = pd.read_csv(annotations_path)\nfeatures = []\nfor _, row in annotations.iterrows():\n    try:\n        # Handle ROI based on its type\n        roi_type = row['ROI']\n        classification = row['Classification']\n        name = row['Name']\n        if roi_type.startswith('Polygon'):  # Example: \"Polygon\" type\n            # Assuming it contains coordinates in some standard format",
+        "detail": "convert_csv_to_geojson",
+        "documentation": {}
+    },
+    {
+        "label": "features",
+        "kind": 5,
+        "importPath": "convert_csv_to_geojson",
+        "description": "convert_csv_to_geojson",
+        "peekOfCode": "features = []\nfor _, row in annotations.iterrows():\n    try:\n        # Handle ROI based on its type\n        roi_type = row['ROI']\n        classification = row['Classification']\n        name = row['Name']\n        if roi_type.startswith('Polygon'):  # Example: \"Polygon\" type\n            # Assuming it contains coordinates in some standard format\n            polygon_coords = eval(roi_type.split(':', 1)[-1])  # Parse coordinates if part of string",
+        "detail": "convert_csv_to_geojson",
+        "documentation": {}
+    },
+    {
+        "label": "geojson",
+        "kind": 5,
+        "importPath": "convert_csv_to_geojson",
+        "description": "convert_csv_to_geojson",
+        "peekOfCode": "geojson = {\n    \"type\": \"FeatureCollection\",\n    \"features\": features\n}\ngeojson_path = r'C:\\Users\\steve\\Projects\\WeaverLab\\analysis_panel_1\\27620_scaled_annotations.geojson'\nwith open(geojson_path, 'w') as f:\n    json.dump(geojson, f)\nprint(f\"GeoJSON file saved to {geojson_path}\")",
+        "detail": "convert_csv_to_geojson",
+        "documentation": {}
+    },
+    {
+        "label": "geojson_path",
+        "kind": 5,
+        "importPath": "convert_csv_to_geojson",
+        "description": "convert_csv_to_geojson",
+        "peekOfCode": "geojson_path = r'C:\\Users\\steve\\Projects\\WeaverLab\\analysis_panel_1\\27620_scaled_annotations.geojson'\nwith open(geojson_path, 'w') as f:\n    json.dump(geojson, f)\nprint(f\"GeoJSON file saved to {geojson_path}\")",
+        "detail": "convert_csv_to_geojson",
+        "documentation": {}
+    },
+    {
+        "label": "image_path",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "image_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched.png')\n# Load the original image\noriginal_image = Image.open(image_path)\n# Define the dimensions for cropping\ncropped_width = 2209\ncropped_height = 1824\n# Crop the image from the top-left corner\ncropped_image = original_image.crop((0, 0, cropped_width, cropped_height))\n# Convert the cropped image to grayscale\ngray_image = cropped_image.convert(\"L\")",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "original_image",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "original_image = Image.open(image_path)\n# Define the dimensions for cropping\ncropped_width = 2209\ncropped_height = 1824\n# Crop the image from the top-left corner\ncropped_image = original_image.crop((0, 0, cropped_width, cropped_height))\n# Convert the cropped image to grayscale\ngray_image = cropped_image.convert(\"L\")\n# Define the path and name for the saved image\nsave_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "cropped_width",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "cropped_width = 2209\ncropped_height = 1824\n# Crop the image from the top-left corner\ncropped_image = original_image.crop((0, 0, cropped_width, cropped_height))\n# Convert the cropped image to grayscale\ngray_image = cropped_image.convert(\"L\")\n# Define the path and name for the saved image\nsave_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')\n# Save the grayscale image as PNG\ngray_image.save(save_path)",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "cropped_height",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "cropped_height = 1824\n# Crop the image from the top-left corner\ncropped_image = original_image.crop((0, 0, cropped_width, cropped_height))\n# Convert the cropped image to grayscale\ngray_image = cropped_image.convert(\"L\")\n# Define the path and name for the saved image\nsave_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')\n# Save the grayscale image as PNG\ngray_image.save(save_path)\nprint(f\"Grayscale image saved to {save_path}\")",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "cropped_image",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "cropped_image = original_image.crop((0, 0, cropped_width, cropped_height))\n# Convert the cropped image to grayscale\ngray_image = cropped_image.convert(\"L\")\n# Define the path and name for the saved image\nsave_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')\n# Save the grayscale image as PNG\ngray_image.save(save_path)\nprint(f\"Grayscale image saved to {save_path}\")",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "gray_image",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "gray_image = cropped_image.convert(\"L\")\n# Define the path and name for the saved image\nsave_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')\n# Save the grayscale image as PNG\ngray_image.save(save_path)\nprint(f\"Grayscale image saved to {save_path}\")",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "save_path",
+        "kind": 5,
+        "importPath": "crop_27620",
+        "description": "crop_27620",
+        "peekOfCode": "save_path = os.path.join(os.getcwd(), 'final_outputs', '27620_STIFMap_stitched_cropped_gray.png')\n# Save the grayscale image as PNG\ngray_image.save(save_path)\nprint(f\"Grayscale image saved to {save_path}\")",
+        "detail": "crop_27620",
+        "documentation": {}
+    },
+    {
+        "label": "add_large_images_to_gitignore",
+        "kind": 2,
+        "importPath": "gen_gitignore",
+        "description": "gen_gitignore",
+        "peekOfCode": "def add_large_images_to_gitignore(directory, size_limit_mb=10):\n    size_limit_bytes = size_limit_mb * 1024 * 1024  # Convert MB to bytes\n    gitignore_entries = []\n    for root, dirs, files in os.walk(directory):\n        for file in files:\n            if file.lower().endswith(('.png', '.tif')):\n                file_path = os.path.join(root, file)\n                if os.path.getsize(file_path) > size_limit_bytes:\n                    relative_path = os.path.relpath(file_path, directory)\n                    gitignore_entries.append(relative_path)",
+        "detail": "gen_gitignore",
+        "documentation": {}
+    },
+    {
+        "label": "gen_STIFMap_tile",
+        "kind": 2,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "def gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):\n    \"\"\"\n    Generate and save the STIFMap for a given tile.\n    Parameters:\n    - dapi_path: Path to the DAPI image.\n    - collagen_path: Path to the collagen image.\n    - name: Name associated with the STIFMap.\n    - step: Step size for processing.\n    - models: Models used for STIFMap generation.\n    - batch_size: Batch size for processing.",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "is_tile_completed",
+        "kind": 2,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "def is_tile_completed(output_path):\n    return os.path.exists(output_path)\ndef get_base_file_name(file_path):\n    # Extract the file name without the extension\n    file_name = os.path.splitext(os.path.basename(file_path))[0]\n    # Keep only the first two parts (e.g., '27620_C0') by splitting on '_'\n    base_name = \"_\".join(file_name.split(\"_\")[:2])\n    return base_name\n# Generate the STIFMaps for all the tiles for a base image\ndef gen_STIFMap(base_name):",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "get_base_file_name",
+        "kind": 2,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "def get_base_file_name(file_path):\n    # Extract the file name without the extension\n    file_name = os.path.splitext(os.path.basename(file_path))[0]\n    # Keep only the first two parts (e.g., '27620_C0') by splitting on '_'\n    base_name = \"_\".join(file_name.split(\"_\")[:2])\n    return base_name\n# Generate the STIFMaps for all the tiles for a base image\ndef gen_STIFMap(base_name):\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, orig_image_dir=ORIG_IMAGE_DIR)\n    base_name_C0 = get_base_file_name(dapi_path)",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "gen_STIFMap",
+        "kind": 2,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "def gen_STIFMap(base_name):\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, orig_image_dir=ORIG_IMAGE_DIR)\n    base_name_C0 = get_base_file_name(dapi_path)\n    base_name_C1 = get_base_file_name(collagen_path)    \n    # Automatically determine num_rows and num_cols based on filenames\n    tile_pattern_C0 = re.compile(rf\"{base_name_C0}_(\\d+)_(\\d+)\\.tif\")\n    tile_pattern_C1 = re.compile(rf\"{base_name_C1}_(\\d+)_(\\d+)\\.tif\")\n    # tile_pattern = re.compile(rf\"{base_name_C0}_(\\d+)_(\\d+)\\.tif\")\n    tile_image_dir = os.path.join(TEMP_OUTPUTS_DIR, base_name, \"IPMN_tiles\")\n    # Dictionary to store how many columns exist per row",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "kind": 5,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "models = [\n    os.path.join(MODELS_DIR, 'iteration_1171.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1000.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1043.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1161.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1180.pt')\n]\n# Parameters\n# STIFMap_SCALE_FACTOR = 0.4\nSTIFMap_SCALE_FACTOR = 2.712",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_SCALE_FACTOR",
+        "kind": 5,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "STIFMap_SCALE_FACTOR = 2.712\nSTIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndef gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):\n    \"\"\"\n    Generate and save the STIFMap for a given tile.\n    Parameters:",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_STEP",
+        "kind": 5,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "STIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndef gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):\n    \"\"\"\n    Generate and save the STIFMap for a given tile.\n    Parameters:\n    - dapi_path: Path to the DAPI image.",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_SQUARE_SIDE",
+        "kind": 5,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "STIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndef gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):\n    \"\"\"\n    Generate and save the STIFMap for a given tile.\n    Parameters:\n    - dapi_path: Path to the DAPI image.\n    - collagen_path: Path to the collagen image.",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_BATCH_SIZE",
+        "kind": 5,
+        "importPath": "gen_STIFMaps",
+        "description": "gen_STIFMaps",
+        "peekOfCode": "STIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndef gen_STIFMap_tile(dapi_path, collagen_path, name, step, models, batch_size, square_side, check_existing=True):\n    \"\"\"\n    Generate and save the STIFMap for a given tile.\n    Parameters:\n    - dapi_path: Path to the DAPI image.\n    - collagen_path: Path to the collagen image.\n    - name: Name associated with the STIFMap.",
+        "detail": "gen_STIFMaps",
+        "documentation": {}
+    },
+    {
+        "label": "normalize_image",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):\n    \"\"\"Plot histogram of pixel values.\"\"\"\n    plt.hist(image.ravel(), bins=256, range=(image.min(), image.max()))\n    plt.title(title)\n    plt.xlabel('Pixel Value')",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "plot_histogram",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def plot_histogram(image, title):\n    \"\"\"Plot histogram of pixel values.\"\"\"\n    plt.hist(image.ravel(), bins=256, range=(image.min(), image.max()))\n    plt.title(title)\n    plt.xlabel('Pixel Value')\n    plt.ylabel('Frequency')\n    plt.show()\ndef get_dapi_and_collagen_paths(base_name, orig_image_dir):\n    \"\"\"Find and return paths to DAPI and Collagen files.\"\"\"\n    dapi_pattern = re.compile(rf\"^{base_name}_C0.*\\.(tif|tiff)$\", re.IGNORECASE)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_dapi_and_collagen_paths",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def get_dapi_and_collagen_paths(base_name, orig_image_dir):\n    \"\"\"Find and return paths to DAPI and Collagen files.\"\"\"\n    dapi_pattern = re.compile(rf\"^{base_name}_C0.*\\.(tif|tiff)$\", re.IGNORECASE)\n    collagen_pattern = re.compile(rf\"^{base_name}_C1.*\\.(tif|tiff)$\", re.IGNORECASE)\n    dapi_path, collagen_path = None, None\n    for file_name in os.listdir(orig_image_dir):\n        if dapi_pattern.match(file_name):\n            dapi_path = os.path.join(orig_image_dir, file_name)\n        elif collagen_pattern.match(file_name):\n            collagen_path = os.path.join(orig_image_dir, file_name)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_tile_base_name",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def get_tile_base_name(input_path):\n    # Extract the file name without the extension\n    file_name = os.path.splitext(os.path.basename(input_path))[0]\n    # Split by underscores and take the first two parts to get '27620_C0'\n    base_name = \"_\".join(file_name.split(\"_\")[:2])\n    return base_name\n# Function to check image dimensions\ndef check_image_dimensions(image_path):\n    try:\n        with tifffile.TiffFile(image_path) as tif:",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "check_image_dimensions",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def check_image_dimensions(image_path):\n    try:\n        with tifffile.TiffFile(image_path) as tif:\n            height, width = tif.pages[0].shape[:2]\n            # width, height = tif.pages[0].shape[:2]\n            print(f\"File: {os.path.basename(image_path)}, Dimensions: {width}x{height}\")\n            return width, height\n    except Exception as e:\n        print(f\"Error opening {image_path}: {e}\")\n# Function to convert seconds to hours, minutes, and seconds",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "convert_seconds_to_hms",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def convert_seconds_to_hms(seconds):\n    hours = int(seconds // 3600)\n    minutes = int((seconds % 3600) // 60)\n    seconds = seconds % 60\n    time_parts = []\n    if hours > 0:\n        time_parts.append(f\"{hours} hours\")\n    if minutes > 0:\n        time_parts.append(f\"{minutes} minutes\")\n    time_parts.append(f\"{seconds:.1f} seconds\")",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "get_base_name",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def get_base_name(file_path):\n    \"\"\"\n    Extracts the base name (first part before '_') from a file name or full file path.\n    Parameters:\n        file_path (str): The file name or full file path.\n    Returns:\n        str: The base name (e.g., '27620').\n    \"\"\"\n    # Extract just the file name from the full path\n    file_name = os.path.basename(file_path)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_STIFMap_tile_path",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def gen_STIFMap_tile_path(filename):\n    \"\"\"\n    Generate the output path for STIFMap images.\n    Parameters:\n        filename (str): The name of the input tile file.\n        base_name (str): The base name for the output file.\n        STIFMaps_directory (str): The directory where the output file will be saved.\n    Returns:\n        str: The full output path for the STIFMap image, or None if row/column cannot be extracted.\n    \"\"\"",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "save_stiffness_colormap",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def save_stiffness_colormap(stiffness_map, save_path):\n    \"\"\"\n    Save a colorbar legend for the given stiffness map.\n    Parameters:\n    - stiffness_map (np.ndarray): The stiffness data array.\n    - save_path (str): The path to save the colorbar legend image.\n    \"\"\"\n    # Extract min and max from the actual data\n    min_value = np.min(stiffness_map)\n    max_value = np.max(stiffness_map)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_colormap_legend",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def gen_colormap_legend(base_name):\n    \"\"\"\n    Generate and save a colormap legend for the raw stiffness values.\n    Parameters:\n    - base_name: The base name to determine the directory.\n    \"\"\"\n    stiffness_dir = os.path.join(TEMP_OUTPUTS_DIR, base_name, \"STIFMap_tiles\")\n    # Initialize min and max values\n    min_value = float('inf')\n    max_value = float('-inf')",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "stitch_STIFMap_tiles",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def stitch_STIFMap_tiles(base_name, file_extension='npy'):\n    os.makedirs(TEMP_OUTPUTS_DIR, exist_ok=True)\n    os.makedirs(FINAL_OUTPUTS_DIR, exist_ok=True)\n    # Dynamically determine the number of rows and columns\n    tile_pattern = re.compile(rf\"{base_name}_(\\d+)_(\\d+)\\.{file_extension}\")\n    STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, \"STIFMap_tiles\")\n    output_filename = os.path.join(FINAL_OUTPUTS_DIR, f\"{base_name}_STIFMap_stitched.png\")\n    row_col_map = {}\n    for file in os.listdir(STIFMaps_directory):\n        match = tile_pattern.match(file)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "calc_crop_dimensions",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def calc_crop_dimensions(base_name, image_format='png'):\n    \"\"\"\n    Calculate the dimensions for cropping the STIFMap image based on a scaling factor.\n    Parameters:\n    - base_name: The base name used to construct file paths.\n    - image_format: The format of the image file (default is 'png').\n    Returns:\n    - cropped_width: The calculated width for cropping, rounded to the nearest integer.\n    - cropped_height: The calculated height for cropping, rounded to the nearest integer.\n    \"\"\"",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "crop_STIFMap",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def crop_STIFMap(base_name, image_format='png'):\n    # Define the path to the image file\n    image_path = os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_stitched.png')\n    # Load the original image\n    original_image = Image.open(image_path)\n    # Define the dimensions for cropping\n    # cropped_width = 2209\n    # cropped_height = 1824\n    cropped_width, cropped_height = calc_crop_dimensions(base_name)\n    # Crop the image from the top-left corner",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "scale_annotations",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def scale_annotations(base_name):\n    \"\"\"\n    Scales annotations in a GeoJSON file and calculates mean intensities from an image.\"\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_annotations.geojson\")\n    output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations.geojson\")\n    # Load the original GeoJSON file\n    with open(input_geojson_path, 'r') as f:\n        geojson_data = json.load(f)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_report",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def gen_report(base_name):\n    \"\"\"\n    Generates a report by analyzing mean intensities from a GeoJSON file and an image.\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_annotations.geojson\")\n    image_path = os.path.join(FINAL_OUTPUTS_DIR, f\"{base_name}_STIFMap_stitched_cropped_gray.png\")\n    output_csv_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_mean_intensity_results.csv\")\n    # Load the original GeoJSON file\n    with open(input_geojson_path, 'r') as f:",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "filter_measurements",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def filter_measurements(base_name):\n    \"\"\"\n    Filter the CSV file to include only the specified columns, rename a column, and sort by Classification.\n    Args:\n        base_name (str): Base name of the input CSV file. The full path is constructed using this base name.\n    Returns:\n        pd.DataFrame: Filtered DataFrame with specified columns, renamed column, and sorted by Classification.\n    \"\"\"\n    # Construct the input and output file paths using the base name\n    # input_file = f\"{QUPATH_PROJECT_DIR}/{base_name}_measurements.csv\"",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "PROJECT_DIR = os.getcwd()\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "MODELS_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "QUPATH_PROJECT_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "FINAL_OUTPUTS_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_NAMES",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "BASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TILE_SIZE",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "TILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):\n    \"\"\"Plot histogram of pixel values.\"\"\"\n    plt.hist(image.ravel(), bins=256, range=(image.min(), image.max()))",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "gen_tile_images",
+        "kind": 2,
+        "importPath": "preprocess_images",
+        "description": "preprocess_images",
+        "peekOfCode": "def gen_tile_images(input_path, output_dir, tile_size=5003):\n    \"\"\"\n    Generate tiled images from a large TIFF image.\n    Parameters:\n    - input_path: Path to the input TIFF image.\n    - output_dir: Directory to save the output tiles.\n    - tile_size: Size of each tile.\n    \"\"\"\n    # Check if the input file exists\n    if not os.path.exists(input_path):",
+        "detail": "preprocess_images",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "models = [\n    os.path.join(MODELS_DIR, 'iteration_1171.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1000.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1043.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1161.pt'),\n    os.path.join(MODELS_DIR, 'iteration_1180.pt')\n]\n# Parameters\n# STIFMap_SCALE_FACTOR = 0.5\nSTIFMap_SCALE_FACTOR = 2.712",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_SCALE_FACTOR",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "STIFMap_SCALE_FACTOR = 2.712\nSTIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_STEP",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "STIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_SQUARE_SIDE",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "STIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "STIFMap_BATCH_SIZE",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "STIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]\ncollagen_files = [",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "dap_files",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "dap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]\ncollagen_files = [\n    \"15806_C1-1.tif\",\n    \"15806_C1-2.tif\",\n    \"15806_C1-3.tif\",",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "collagen_files",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "collagen_files = [\n    \"15806_C1-1.tif\",\n    \"15806_C1-2.tif\",\n    \"15806_C1-3.tif\",\n    \"15806_C1-4.tif\",\n]\noutput_files = [\n    \"15806-1_STIFMap.png\", \n    \"15806-2_STIFMap.png\",\n    \"15806-3_STIFMap.png\",",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "output_files",
+        "kind": 5,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "output_files = [\n    \"15806-1_STIFMap.png\", \n    \"15806-2_STIFMap.png\",\n    \"15806-3_STIFMap.png\",\n    \"15806-4_STIFMap.png\",\n]\nfor i in range(len(dap_files)):\n    start_time = time.perf_counter()\n    dapi_path = os.path.join(ORIG_IMAGE_DIR, \"small_cropped_areas\",dap_files[i])\n    collagen_path = os.path.join(ORIG_IMAGE_DIR, \"small_cropped_areas\",collagen_files[i])",
+        "detail": "run_STIFMap",
+        "documentation": {}
+    },
+    {
+        "label": "xfact",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "xfact = 2209 / 31398  # Approximately 0.0704\nyfact = 1824 / 25922  # Approximately 0.0704\n# File paths\ninput_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_annotations.geojson\"\noutput_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_scaled_annotations.geojson\"\nimage_path = \"C:/Users/steve/Projects/WeaverLab/STIFMaps-IPMN-Analysis/final_outputs/27620_STIFMap_stitched_cropped_gray.png\"\noutput_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "yfact",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "yfact = 1824 / 25922  # Approximately 0.0704\n# File paths\ninput_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_annotations.geojson\"\noutput_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_scaled_annotations.geojson\"\nimage_path = \"C:/Users/steve/Projects/WeaverLab/STIFMaps-IPMN-Analysis/final_outputs/27620_STIFMap_stitched_cropped_gray.png\"\noutput_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)\n# Debugging: Print entire GeoJSON structure",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "input_geojson_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "input_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_annotations.geojson\"\noutput_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_scaled_annotations.geojson\"\nimage_path = \"C:/Users/steve/Projects/WeaverLab/STIFMaps-IPMN-Analysis/final_outputs/27620_STIFMap_stitched_cropped_gray.png\"\noutput_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)\n# Debugging: Print entire GeoJSON structure\n# print(\"Loaded GeoJSON Data:\")\n# print(json.dumps(geojson_data, indent=2))",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "output_geojson_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "output_geojson_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/27620_scaled_annotations.geojson\"\nimage_path = \"C:/Users/steve/Projects/WeaverLab/STIFMaps-IPMN-Analysis/final_outputs/27620_STIFMap_stitched_cropped_gray.png\"\noutput_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)\n# Debugging: Print entire GeoJSON structure\n# print(\"Loaded GeoJSON Data:\")\n# print(json.dumps(geojson_data, indent=2))\n# Debugging: Print a summary of the GeoJSON structure",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "image_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "image_path = \"C:/Users/steve/Projects/WeaverLab/STIFMaps-IPMN-Analysis/final_outputs/27620_STIFMap_stitched_cropped_gray.png\"\noutput_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)\n# Debugging: Print entire GeoJSON structure\n# print(\"Loaded GeoJSON Data:\")\n# print(json.dumps(geojson_data, indent=2))\n# Debugging: Print a summary of the GeoJSON structure\nprint(f\"Number of features in GeoJSON: {len(geojson_data['features'])}\")",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "output_csv_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "output_csv_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/mean_intensity_results.csv\"\n# Load the original GeoJSON file\nwith open(input_geojson_path, 'r') as f:\n    geojson_data = json.load(f)\n# Debugging: Print entire GeoJSON structure\n# print(\"Loaded GeoJSON Data:\")\n# print(json.dumps(geojson_data, indent=2))\n# Debugging: Print a summary of the GeoJSON structure\nprint(f\"Number of features in GeoJSON: {len(geojson_data['features'])}\")\n# Check each feature and print only its keys",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "image",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)\n# Analyze mean intensities\nresults = []\nfor feature in geojson_data['features']:\n    object_id = feature['properties'].get('Object ID', 'Unknown')\n    roi = feature['properties'].get('ROI', 'Unknown')\n    classification = feature['properties'].get('Classification', 'Unknown')\n    # Convert scaled geometry to mask\n    polygon = shape(feature['geometry'])\n    mask = np.zeros(image.shape, dtype=np.uint8)",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "results",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "results = []\nfor feature in geojson_data['features']:\n    object_id = feature['properties'].get('Object ID', 'Unknown')\n    roi = feature['properties'].get('ROI', 'Unknown')\n    classification = feature['properties'].get('Classification', 'Unknown')\n    # Convert scaled geometry to mask\n    polygon = shape(feature['geometry'])\n    mask = np.zeros(image.shape, dtype=np.uint8)\n    if isinstance(polygon, Polygon):\n        points = np.array(polygon.exterior.coords, dtype=np.int32)",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(output_csv_path, index=False)\nprint(f\"Mean intensities saved to: {output_csv_path}\")\n# File path for the summary table image\noutput_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"\n# Read the generated CSV into a DataFrame\nsummary_df = pd.read_csv(output_csv_path)\n# Summarize the data by classification\nsummary = df.groupby('Classification').agg(\n    Total_Number=('Classification', 'size'),",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "output_image_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "output_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"\n# Read the generated CSV into a DataFrame\nsummary_df = pd.read_csv(output_csv_path)\n# Summarize the data by classification\nsummary = df.groupby('Classification').agg(\n    Total_Number=('Classification', 'size'),\n    Mean_Intensity=('Mean Intensity', 'mean')\n).reset_index()\n# File path for the summary table image\noutput_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "summary_df",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "summary_df = pd.read_csv(output_csv_path)\n# Summarize the data by classification\nsummary = df.groupby('Classification').agg(\n    Total_Number=('Classification', 'size'),\n    Mean_Intensity=('Mean Intensity', 'mean')\n).reset_index()\n# File path for the summary table image\noutput_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"\n# Create a summary table visualization\nfig, ax = plt.subplots(figsize=(8, 5))  # Adjust the size as needed",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "summary",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "summary = df.groupby('Classification').agg(\n    Total_Number=('Classification', 'size'),\n    Mean_Intensity=('Mean Intensity', 'mean')\n).reset_index()\n# File path for the summary table image\noutput_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"\n# Create a summary table visualization\nfig, ax = plt.subplots(figsize=(8, 5))  # Adjust the size as needed\nax.axis('off')  # Hide the axes\n# Add a table to the figure",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "output_image_path",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "output_image_path = \"C:/Users/steve/Projects/WeaverLab/analysis_panel_1/summary_table.jpeg\"\n# Create a summary table visualization\nfig, ax = plt.subplots(figsize=(8, 5))  # Adjust the size as needed\nax.axis('off')  # Hide the axes\n# Add a table to the figure\ntable = plt.table(cellText=summary.values, colLabels=summary.columns, cellLoc='center', loc='center')\ntable.auto_set_font_size(False)\ntable.set_fontsize(10)\ntable.auto_set_column_width(col=list(range(len(summary.columns))))\n# Save the table as a JPEG image",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    },
+    {
+        "label": "table",
+        "kind": 5,
+        "importPath": "scale_annotations_27620",
+        "description": "scale_annotations_27620",
+        "peekOfCode": "table = plt.table(cellText=summary.values, colLabels=summary.columns, cellLoc='center', loc='center')\ntable.auto_set_font_size(False)\ntable.set_fontsize(10)\ntable.auto_set_column_width(col=list(range(len(summary.columns))))\n# Save the table as a JPEG image\nplt.savefig(output_image_path, format='jpeg', bbox_inches='tight', dpi=300)\nprint(f\"Summary table saved to: {output_image_path}\")",
+        "detail": "scale_annotations_27620",
+        "documentation": {}
+    }
+]
