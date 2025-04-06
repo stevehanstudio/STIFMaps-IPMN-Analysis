@@ -11,17 +11,23 @@ from shapely.geometry import shape, mapping, Polygon
 from shapely.affinity import scale
 
 # Constants - Directories, Global Variables
+NO_TILING = True
 PROJECT_DIR = os.getcwd()
-ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
+TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
+if NO_TILING:
+    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')
+    TILE_SIZE = None
+else:
+    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+    TILE_SIZE = 5003
 
-TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
-FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
-
-BASE_NAMES = ['27620', '7002']
+BASE_NAMES = ['1865', '5114', '6488', '15806', '8761', '9074',]
+# BASE_NAMES = ['13401']
+# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
-TILE_SIZE = 5003
 
 # Helper Functions
 def normalize_image(image, lower_percentile=1, upper_percentile=99):

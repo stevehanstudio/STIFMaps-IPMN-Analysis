@@ -11,7 +11,7 @@ if not os.path.exists(TEMP_OUTPUTS_DIR):
     os.makedirs(TEMP_OUTPUTS_DIR)
     print("Created temp output directory: " + TEMP_OUTPUTS_DIR)
 
-output_folder = os.path.join(TEMP_OUTPUTS_DIR, "resized_IPMN_images")
+output_folder = os.path.join(TEMP_OUTPUTS_DIR, "resized0.25_IPMN_images")
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
     print("Created resized image output directory: " + output_folder)
@@ -35,9 +35,9 @@ for image_name in image_files:
     original_width = imp.getWidth()
     original_height = imp.getHeight()
 
-    # Compute new dimensions (1/5th scale)
-    new_width = original_width // 5
-    new_height = original_height // 5
+    # Compute new dimensions (1/4th scale)
+    new_width = original_width // 4
+    new_height = original_height // 4
 
     # Resize the image
     imp = imp.resize(new_width, new_height, "bilinear")
