@@ -16,15 +16,17 @@ PROJECT_DIR = os.getcwd()
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
-QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
+QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')
+ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
 if NO_TILING:
-    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')
+    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')
     TILE_SIZE = None
 else:
-    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
     TILE_SIZE = 5003
 
-BASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]
+BASE_NAMES = ['9074']
+# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '6488', '15806', '9074',]
 # BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 
@@ -392,80 +394,6 @@ def stitch_STIFMap_tiles(base_name, file_extension='npy'):
     plt.imsave(output_filename, normalized_image, cmap='gray')
     print(f"Stitched grayscale image saved as {output_filename}")
 
-
-# def stitch_STIFMap_tiles(base_name, image_format='png'):
-#     os.makedirs(TEMP_OUTPUTS_DIR, exist_ok=True)
-#     os.makedirs(FINAL_OUTPUTS_DIR, exist_ok=True)
-
-#     # Dynamically determine the number of rows and columns
-#     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
-#     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
-#     output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
-
-#     row_col_map = {}
-#     for file in os.listdir(STIFMaps_directory):
-#         match = tile_pattern.match(file)
-#         if match:
-#             row, col = map(int, match.groups())
-#             row_col_map.setdefault(row, set()).add(col)
-
-#     if not row_col_map:
-#         raise ValueError("No matching files found in the directory.")
-
-#     # Correctly determine the number of rows and columns
-#     max_row = max(row_col_map.keys())
-#     max_col = max(max(cols) for cols in row_col_map.values())
-#     num_rows = max_row + 1
-#     num_cols = max_col + 1
-
-#     print(f"Detected grid size: {num_rows} rows x {num_cols} columns")
-
-#     # Determine image dimensions from the first available .png tile
-#     image_width = image_height = None
-#     for row in range(num_rows):
-#         for col in range(num_cols):
-#             image_filename = f"{base_name}_{row}_{col}.{image_format}"
-#             image_path = os.path.join(STIFMaps_directory, image_filename)
-#             if os.path.exists(image_path):
-#                 try:
-#                     with Image.open(image_path) as image:
-#                         image_width, image_height = image.size
-#                     break
-#                 except Exception as e:
-#                     print(f"Error opening {image_path}: {e}")
-#         if image_width is not None:
-#             break
-
-#     if image_width is None:
-#         raise ValueError("No valid .png image files found to determine dimensions.")
-
-#     stitched_width = num_cols * image_width
-#     stitched_height = num_rows * image_height
-#     stitched_image = Image.new('RGB', (stitched_width, stitched_height), color='white')
-
-#     for row in range(num_rows):
-#         for col in range(num_cols):
-#             image_filename = f"{base_name}_{row}_{col}.{image_format}"
-#             image_path = os.path.join(STIFMaps_directory, image_filename)
-
-#             if os.path.exists(image_path):
-#                 try:
-#                     image = Image.open(image_path)
-#                 except Exception as e:
-#                     print(f"Error opening {image_path}: {e}")
-#                     image = Image.new('RGB', (image_width, image_height), color='white')
-#                     print(f"Missing tile: {image_filename}. Replacing with a white tile.")
-#             else:
-#                 image = Image.new('RGB', (image_width, image_height), color='white')
-#                 print(f"Missing tile: {image_filename}. Replacing with a white tile.")
-
-#             x = col * image_width
-#             y = row * image_height
-#             stitched_image.paste(image, (x, y))
-
-#     stitched_image.save(output_filename)
-#     print(f"Stitched image saved as {output_filename}")
-
 def calc_crop_dimensions(base_name, image_format='png'):
     """
     Calculate the dimensions for cropping the STIFMap image based on a scaling factor.
@@ -545,9 +473,9 @@ def scale_annotations(base_name, resized=False):
     """
 
     # File paths
-    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_annotations.geojson")
+    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, "STIFMap", "annotations", f"{base_name}_annotations.geojson")
     if resized:
-        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_scaled_annotations_0.25.geojson")
+        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, "STIFMap", "scaled_annotations", f"{base_name}_scaled_annotations_0.25.geojson")
     else:
         output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_scaled_annotations.geojson")
 
@@ -561,11 +489,10 @@ def scale_annotations(base_name, resized=False):
 
     # Debugging: Print a summary of the GeoJSON structure
     print(f"Number of features in GeoJSON: {len(geojson_data['features'])}")
-
     dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
     orig_width, orig_height = check_image_dimensions(dapi_path)
     if resized:
-        STIFMap_width, STIFMap_height = check_image_dimensions(os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_resized.png'))
+        STIFMap_width, STIFMap_height = check_image_dimensions(os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap.png'))
     else:
         STIFMap_width, STIFMap_height = calc_crop_dimensions(base_name)
 
@@ -574,6 +501,8 @@ def scale_annotations(base_name, resized=False):
     # yfact = 1824 / 25922  # Approximately 0.0704
     xfact = STIFMap_width / orig_width  # Approximately 0.0704
     yfact = STIFMap_height / orig_height  # Approximately 0.0704
+
+    print(f"xfact: {xfact}, yfact: {yfact}")
 
     # Check each feature and print only its keys
     for i, feature in enumerate(geojson_data['features']):
