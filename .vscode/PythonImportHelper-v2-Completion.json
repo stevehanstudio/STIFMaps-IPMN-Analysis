@@ -8,6 +8,14 @@
         "documentation": {}
     },
     {
+        "label": "IJ",
+        "importPath": "ij",
+        "description": "ij",
+        "isExtraImport": true,
+        "detail": "ij",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -73,6 +81,14 @@
         "description": "PIL",
         "isExtraImport": true,
         "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "filter_measurements",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
         "documentation": {}
     },
     {
@@ -356,22 +372,6 @@
         "documentation": {}
     },
     {
-        "label": "normalize_image",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "plot_histogram",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
         "label": "get_dapi_and_collagen_paths",
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
@@ -404,38 +404,6 @@
         "documentation": {}
     },
     {
-        "label": "gen_STIFMap_tile_path",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "# save_stiffness_colormap",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "stitch_STIFMap_tiles",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "# stitch_images",
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "isExtraImport": true,
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
         "label": "gen_colormap_legend",
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
@@ -444,7 +412,7 @@
         "documentation": {}
     },
     {
-        "label": "scale_annotations",
+        "label": "BASE_NAMES",
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
         "isExtraImport": true,
@@ -453,6 +421,14 @@
     },
     {
         "label": "gen_report",
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "isExtraImport": true,
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "scale_annotations",
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
         "isExtraImport": true,
@@ -694,7 +670,7 @@
         "kind": 5,
         "importPath": "ImageJ scripts.resize",
         "description": "ImageJ scripts.resize",
-        "peekOfCode": "PROJECT_DIR = \"B:/Projects/WeaverLab/STIFMaps-IPMN-Analysis/\"\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)",
+        "peekOfCode": "PROJECT_DIR = os.path.join(os.getcwd(), 'Projects', 'WeaverLab', 'STIFMaps-IPMN-Analysis')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)",
         "detail": "ImageJ scripts.resize",
         "documentation": {}
     },
@@ -732,6 +708,51 @@
         "description": "ImageJ scripts.resize",
         "peekOfCode": "image_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]\nprint(\"Found \" + str(len(image_files)) + \" image(s) to process.\")\n# Loop through each image\nfor image_name in image_files:\n    print(\"Processing: \" + image_name)\n    # Open image\n    imp = IJ.openImage(os.path.join(ORIG_IMAGE_DIR, image_name))\n    if imp is None:\n        print(\"Skipping \" + image_name + \", failed to open.\")\n        continue  # Skip if the image couldn't be opened",
         "detail": "ImageJ scripts.resize",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize0.25",
+        "description": "ImageJ scripts.resize0.25",
+        "peekOfCode": "PROJECT_DIR = os.path.join(os.getcwd(), 'Projects', 'WeaverLab', 'STIFMaps-IPMN-Analysis')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized0.25_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)",
+        "detail": "ImageJ scripts.resize0.25",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize0.25",
+        "description": "ImageJ scripts.resize0.25",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, \"temp_outputs\")\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized0.25_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder",
+        "detail": "ImageJ scripts.resize0.25",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize0.25",
+        "description": "ImageJ scripts.resize0.25",
+        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, \"IPMN_images\")\nif not os.path.exists(TEMP_OUTPUTS_DIR):\n    os.makedirs(TEMP_OUTPUTS_DIR)\n    print(\"Created temp output directory: \" + TEMP_OUTPUTS_DIR)\noutput_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized0.25_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder\nimage_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]",
+        "detail": "ImageJ scripts.resize0.25",
+        "documentation": {}
+    },
+    {
+        "label": "output_folder",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize0.25",
+        "description": "ImageJ scripts.resize0.25",
+        "peekOfCode": "output_folder = os.path.join(TEMP_OUTPUTS_DIR, \"resized0.25_IPMN_images\")\nif not os.path.exists(output_folder):\n    os.makedirs(output_folder)\n    print(\"Created resized image output directory: \" + output_folder)\n# List all TIFF images in the input folder\nimage_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]\nprint(\"Found \" + str(len(image_files)) + \" image(s) to process.\")\n# Loop through each image\nfor image_name in image_files:\n    print(\"Processing: \" + image_name)",
+        "detail": "ImageJ scripts.resize0.25",
+        "documentation": {}
+    },
+    {
+        "label": "image_files",
+        "kind": 5,
+        "importPath": "ImageJ scripts.resize0.25",
+        "description": "ImageJ scripts.resize0.25",
+        "peekOfCode": "image_files = [f for f in os.listdir(ORIG_IMAGE_DIR) if f.endswith((\".tiff\", \".tif\"))]\nprint(\"Found \" + str(len(image_files)) + \" image(s) to process.\")\n# Loop through each image\nfor image_name in image_files:\n    print(\"Processing: \" + image_name)\n    # Open image\n    imp = IJ.openImage(os.path.join(ORIG_IMAGE_DIR, image_name))\n    if imp is None:\n        print(\"Skipping \" + image_name + \", failed to open.\")\n        continue  # Skip if the image couldn't be opened",
+        "detail": "ImageJ scripts.resize0.25",
         "documentation": {}
     },
     {
@@ -964,7 +985,7 @@
         "kind": 2,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "def get_tile_base_name(input_path):\n    # Extract the file name without the extension\n    file_name = os.path.splitext(os.path.basename(input_path))[0]\n    # Split by underscores and take the first two parts to get '27620_C0'\n    base_name = \"_\".join(file_name.split(\"_\")[:2])\n    return base_name\n# Function to check image dimensions\ndef check_image_dimensions(image_path):\n    try:\n        with tifffile.TiffFile(image_path) as tif:",
+        "peekOfCode": "def get_tile_base_name(input_path):\n    # Extract the file name without the extension\n    file_name = os.path.splitext(os.path.basename(input_path))[0]\n    # Split by underscores and take the first two parts to get '27620_C0'\n    base_name = \"_\".join(file_name.split(\"_\")[:2])\n    return base_name\ndef check_image_dimensions(image_path):\n    try:\n        if image_path.lower().endswith(('.tif', '.tiff')):\n            # Open the TIFF image using tifffile",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -973,7 +994,16 @@
         "kind": 2,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "def check_image_dimensions(image_path):\n    try:\n        with tifffile.TiffFile(image_path) as tif:\n            height, width = tif.pages[0].shape[:2]\n            # width, height = tif.pages[0].shape[:2]\n            print(f\"File: {os.path.basename(image_path)}, Dimensions: {width}x{height}\")\n            return width, height\n    except Exception as e:\n        print(f\"Error opening {image_path}: {e}\")\n# Function to convert seconds to hours, minutes, and seconds",
+        "peekOfCode": "def check_image_dimensions(image_path):\n    try:\n        if image_path.lower().endswith(('.tif', '.tiff')):\n            # Open the TIFF image using tifffile\n            with tifffile.TiffFile(image_path) as tif:\n                height, width = tif.pages[0].shape[:2]\n        elif image_path.lower().endswith('.png'):\n            # Open the PNG image using PIL\n            with Image.open(image_path) as img:\n                width, height = img.size",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "resize_and_square_image",
+        "kind": 2,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "def resize_and_square_image(image_path):\n    # Open the image using tifffile\n    with tifffile.TiffFile(image_path) as tif:\n        image = tif.asarray()  # Read the image as-is\n    # Ensure the image is interpreted as 16-bit unsigned\n    image = image.astype(np.uint16)\n    # Print the starting dimensions of the image\n    original_height, original_width = image.shape[:2]\n    print(f\"Starting dimensions of the image: {original_width}x{original_height}\")\n    # Resize the image to 1/5 (20%) of the original size",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1054,7 +1084,7 @@
         "kind": 2,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "def scale_annotations(base_name):\n    \"\"\"\n    Scales annotations in a GeoJSON file and calculates mean intensities from an image.\"\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_annotations.geojson\")\n    output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations.geojson\")\n    # Load the original GeoJSON file\n    with open(input_geojson_path, 'r') as f:\n        geojson_data = json.load(f)",
+        "peekOfCode": "def scale_annotations(base_name, resized=False):\n    \"\"\"\n    Scales annotations in a GeoJSON file and calculates mean intensities from an image.\"\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_annotations.geojson\")\n    if resized:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations_0.25.geojson\")\n    else:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations.geojson\")",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1077,47 +1107,20 @@
         "documentation": {}
     },
     {
+        "label": "NO_TILING",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "NO_TILING = True\nPROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
         "label": "PROJECT_DIR",
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "PROJECT_DIR = os.getcwd()\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions",
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "ORIG_IMAGE_DIR",
-        "kind": 5,
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):",
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "MODELS_DIR",
-        "kind": 5,
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"",
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "QUPATH_PROJECT_DIR",
-        "kind": 5,
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)",
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "TEMP_OUTPUTS_DIR",
-        "kind": 5,
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)",
+        "peekOfCode": "PROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1126,7 +1129,34 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)",
+        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "TEMP_OUTPUTS_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "MODELS_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "QUPATH_PROJECT_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1135,16 +1165,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "BASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
-        "detail": "globals_and_helpers",
-        "documentation": {}
-    },
-    {
-        "label": "TILE_SIZE",
-        "kind": 5,
-        "importPath": "globals_and_helpers",
-        "description": "globals_and_helpers",
-        "peekOfCode": "TILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):\n    \"\"\"Plot histogram of pixel values.\"\"\"\n    plt.hist(image.ravel(), bins=256, range=(image.min(), image.max()))",
+        "peekOfCode": "BASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1155,6 +1176,15 @@
         "description": "preprocess_images",
         "peekOfCode": "def gen_tile_images(input_path, output_dir, tile_size=5003):\n    \"\"\"\n    Generate tiled images from a large TIFF image.\n    Parameters:\n    - input_path: Path to the input TIFF image.\n    - output_dir: Directory to save the output tiles.\n    - tile_size: Size of each tile.\n    \"\"\"\n    # Check if the input file exists\n    if not os.path.exists(input_path):",
         "detail": "preprocess_images",
+        "documentation": {}
+    },
+    {
+        "label": "run_STIFMAP",
+        "kind": 2,
+        "importPath": "run_STIFMap",
+        "description": "run_STIFMap",
+        "peekOfCode": "def run_STIFMAP(base_name):\n    start_time = time.perf_counter()\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)\n    base_name = get_base_name(dapi_path)\n    output_path = os.path.join(FINAL_OUTPUTS_DIR, f\"{base_name}_STIFMap.png\")\n   # Check if the tile has already been processed\n    if not os.path.exists(dapi_path) or not os.path.exists(collagen_path):\n        print(f\"File not found: {dapi_path} and {collagen_path}\")\n        exit\n    print(f\"Processing: {dapi_path}, {collagen_path}\")",
+        "detail": "run_STIFMap",
         "documentation": {}
     },
     {
@@ -1171,7 +1201,7 @@
         "kind": 5,
         "importPath": "run_STIFMap",
         "description": "run_STIFMap",
-        "peekOfCode": "STIFMap_SCALE_FACTOR = 2.712\nSTIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",",
+        "peekOfCode": "STIFMap_SCALE_FACTOR = 2.712\nSTIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\n# for i in range(len(dap_files)):\ndef run_STIFMAP(base_name):\n    start_time = time.perf_counter()\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)",
         "detail": "run_STIFMap",
         "documentation": {}
     },
@@ -1180,7 +1210,7 @@
         "kind": 5,
         "importPath": "run_STIFMap",
         "description": "run_STIFMap",
-        "peekOfCode": "STIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",",
+        "peekOfCode": "STIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)\nSTIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\n# for i in range(len(dap_files)):\ndef run_STIFMAP(base_name):\n    start_time = time.perf_counter()\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)\n    base_name = get_base_name(dapi_path)",
         "detail": "run_STIFMap",
         "documentation": {}
     },
@@ -1189,7 +1219,7 @@
         "kind": 5,
         "importPath": "run_STIFMap",
         "description": "run_STIFMap",
-        "peekOfCode": "STIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]",
+        "peekOfCode": "STIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)\nSTIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\n# for i in range(len(dap_files)):\ndef run_STIFMAP(base_name):\n    start_time = time.perf_counter()\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)\n    base_name = get_base_name(dapi_path)\n    output_path = os.path.join(FINAL_OUTPUTS_DIR, f\"{base_name}_STIFMap.png\")",
         "detail": "run_STIFMap",
         "documentation": {}
     },
@@ -1198,34 +1228,7 @@
         "kind": 5,
         "importPath": "run_STIFMap",
         "description": "run_STIFMap",
-        "peekOfCode": "STIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\ndap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]\ncollagen_files = [",
-        "detail": "run_STIFMap",
-        "documentation": {}
-    },
-    {
-        "label": "dap_files",
-        "kind": 5,
-        "importPath": "run_STIFMap",
-        "description": "run_STIFMap",
-        "peekOfCode": "dap_files = [\n    \"15806_C0-1.tif\", \n    \"15806_C0-2.tif\",\n    \"15806_C0-3.tif\",\n    \"15806_C0-4.tif\",\n]\ncollagen_files = [\n    \"15806_C1-1.tif\",\n    \"15806_C1-2.tif\",\n    \"15806_C1-3.tif\",",
-        "detail": "run_STIFMap",
-        "documentation": {}
-    },
-    {
-        "label": "collagen_files",
-        "kind": 5,
-        "importPath": "run_STIFMap",
-        "description": "run_STIFMap",
-        "peekOfCode": "collagen_files = [\n    \"15806_C1-1.tif\",\n    \"15806_C1-2.tif\",\n    \"15806_C1-3.tif\",\n    \"15806_C1-4.tif\",\n]\noutput_files = [\n    \"15806-1_STIFMap.png\", \n    \"15806-2_STIFMap.png\",\n    \"15806-3_STIFMap.png\",",
-        "detail": "run_STIFMap",
-        "documentation": {}
-    },
-    {
-        "label": "output_files",
-        "kind": 5,
-        "importPath": "run_STIFMap",
-        "description": "run_STIFMap",
-        "peekOfCode": "output_files = [\n    \"15806-1_STIFMap.png\", \n    \"15806-2_STIFMap.png\",\n    \"15806-3_STIFMap.png\",\n    \"15806-4_STIFMap.png\",\n]\nfor i in range(len(dap_files)):\n    start_time = time.perf_counter()\n    dapi_path = os.path.join(ORIG_IMAGE_DIR, \"small_cropped_areas\",dap_files[i])\n    collagen_path = os.path.join(ORIG_IMAGE_DIR, \"small_cropped_areas\",collagen_files[i])",
+        "peekOfCode": "STIFMap_BATCH_SIZE = 100\nprint('Step size is ' + str(STIFMap_STEP) + ' pixels')\nprint('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')\n# for i in range(len(dap_files)):\ndef run_STIFMAP(base_name):\n    start_time = time.perf_counter()\n    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)\n    base_name = get_base_name(dapi_path)\n    output_path = os.path.join(FINAL_OUTPUTS_DIR, f\"{base_name}_STIFMap.png\")\n   # Check if the tile has already been processed",
         "detail": "run_STIFMap",
         "documentation": {}
     },
