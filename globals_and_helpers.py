@@ -19,7 +19,7 @@ QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
 TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
 
-BASE_NAMES = ['27620', '7002']
+BASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 TILE_SIZE = 5003
 
@@ -84,7 +84,7 @@ def convert_seconds_to_hms(seconds):
 def get_base_name(file_path):
     """
     Extracts the base name (first part before '_') from a file name or full file path.
-    
+
     Parameters:
         file_path (str): The file name or full file path.
 
@@ -114,7 +114,7 @@ def get_base_name(file_path):
 def gen_STIFMap_tile_path(filename):
     """
     Generate the output path for STIFMap images.
-    
+
     Parameters:
         filename (str): The name of the input tile file.
         base_name (str): The base name for the output file.
@@ -349,7 +349,7 @@ def stitch_STIFMap_tiles(base_name, file_extension='npy'):
 #     tile_pattern = re.compile(rf"{base_name}_(\d+)_(\d+)\.{image_format}")
 #     STIFMaps_directory = os.path.join(TEMP_OUTPUTS_DIR, base_name, "STIFMap_tiles")
 #     output_filename = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap_stitched.png")
-    
+
 #     row_col_map = {}
 #     for file in os.listdir(STIFMaps_directory):
 #         match = tile_pattern.match(file)
@@ -436,7 +436,7 @@ def calc_crop_dimensions(base_name, image_format='png'):
     except FileNotFoundError:
         print(f"Error: Tile image not found at {STIFMap_tile_image_path}")
         return None, None
-    
+
     dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
     orig_width, orig_height = check_image_dimensions(dapi_path)
 
@@ -481,7 +481,7 @@ def crop_STIFMap(base_name, image_format='png'):
 
     # Define the path and name for the saved image
     save_path = os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_stitched_cropped_gray.png')
- 
+
     # Save the grayscale image as PNG
     gray_image.save(save_path)
 
@@ -533,16 +533,16 @@ def scale_annotations(base_name):
         # Debugging: Print feature properties
         # print("Processing Feature:")
         # print(json.dumps(feature, indent=2))
-        
+
         # Check if 'classification' exists in properties
         if 'classification' not in feature['properties']:
             print(f"Feature with ID {feature.get('id', 'Unknown')} is missing 'classification'. Skipping.")
             feature['properties']['classification'] = {}  # Default to empty dictionary
-        
+
         # Safely handle 'classification'
         classification = feature['properties']['classification']
         feature['properties']['Classification'] = classification.get('name', 'Unknown')
-        
+
         # Update other properties
         feature['properties']['Object ID'] = feature.get('id', 'Unknown')
         feature['properties']['ROI'] = feature['geometry']['type']  # Should reflect Polygon type
@@ -582,21 +582,21 @@ def gen_report(base_name):
         object_id = feature['properties'].get('Object ID', 'Unknown')
         roi = feature['properties'].get('ROI', 'Unknown')
         classification = feature['properties'].get('Classification', 'Unknown')
-        
+
         # Convert scaled geometry to mask
         polygon = shape(feature['geometry'])
         mask = np.zeros(image.shape, dtype=np.uint8)
-        
+
         if isinstance(polygon, Polygon):
             points = np.array(polygon.exterior.coords, dtype=np.int32)
             cv2.fillPoly(mask, [points], 255)
         else:
             print(f"Skipping non-polygon geometry for Object ID {object_id}")
             continue
-        
+
         # Calculate mean intensity
         mean_intensity = cv2.mean(image, mask=mask)[0]
-        
+
         # Store result
         results.append({
             "Object ID": object_id,

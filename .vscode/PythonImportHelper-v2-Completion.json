@@ -1081,7 +1081,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "PROJECT_DIR = os.getcwd()\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions",
+        "peekOfCode": "PROJECT_DIR = os.getcwd()\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1090,7 +1090,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):",
+        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1099,7 +1099,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"",
+        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1108,7 +1108,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)",
+        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1117,7 +1117,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1126,7 +1126,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)",
+        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nBASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1135,7 +1135,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "BASE_NAMES = ['27620', '7002']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
+        "peekOfCode": "BASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\nTILE_SIZE = 5003\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
