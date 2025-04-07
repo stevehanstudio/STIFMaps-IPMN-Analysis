@@ -11,17 +11,22 @@ from shapely.geometry import shape, mapping, Polygon
 from shapely.affinity import scale
 
 # Constants - Directories, Global Variables
+NO_TILING = True
 PROJECT_DIR = os.getcwd()
-ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
+TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')
+if NO_TILING:
+    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')
+    TILE_SIZE = None
+else:
+    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+    TILE_SIZE = 5003
 
-TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
-FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')
-
-BASE_NAMES = ['1865', '4601', '5114', '9074', '15806', '13401']
+BASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]
+# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
-TILE_SIZE = 5003
 
 # Helper Functions
 def normalize_image(image, lower_percentile=1, upper_percentile=99):
@@ -57,16 +62,63 @@ def get_tile_base_name(input_path):
     base_name = "_".join(file_name.split("_")[:2])
     return base_name
 
-# Function to check image dimensions
 def check_image_dimensions(image_path):
     try:
-        with tifffile.TiffFile(image_path) as tif:
-            height, width = tif.pages[0].shape[:2]
-            # width, height = tif.pages[0].shape[:2]
-            print(f"File: {os.path.basename(image_path)}, Dimensions: {width}x{height}")
-            return width, height
+        if image_path.lower().endswith(('.tif', '.tiff')):
+            # Open the TIFF image using tifffile
+            with tifffile.TiffFile(image_path) as tif:
+                height, width = tif.pages[0].shape[:2]
+        elif image_path.lower().endswith('.png'):
+            # Open the PNG image using PIL
+            with Image.open(image_path) as img:
+                width, height = img.size
+        else:
+            raise ValueError("Unsupported image format. Only TIFF and PNG are supported.")
+
+        print(f"File: {os.path.basename(image_path)}, Dimensions: {width}x{height}")
+        return width, height
     except Exception as e:
         print(f"Error opening {image_path}: {e}")
+        return None
+
+# Don't use
+def resize_and_square_image(image_path):
+    # Open the image using tifffile
+    with tifffile.TiffFile(image_path) as tif:
+        image = tif.asarray()  # Read the image as-is
+
+    # Ensure the image is interpreted as 16-bit unsigned
+    image = image.astype(np.uint16)
+
+    # Print the starting dimensions of the image
+    original_height, original_width = image.shape[:2]
+    print(f"Starting dimensions of the image: {original_width}x{original_height}")
+
+    # Resize the image to 1/5 (20%) of the original size
+    new_width = int(original_width * 0.2)
+    new_height = int(original_height * 0.2)
+
+    # Resize the image using PIL while preserving the 16-bit depth
+    resized_image = Image.fromarray(image).resize((new_width, new_height), Image.LANCZOS)
+
+    # Convert the resized image back to a NumPy array with 16-bit unsigned type
+    resized_image_array = np.array(resized_image, dtype=np.uint16)
+
+    # Find the darkest color in the grayscale image
+    darkest_color = np.min(image)
+
+    # Create a new square image with the darkest color
+    square_size = max(new_width, new_height)
+    square_image_array = np.full((square_size, square_size), darkest_color, dtype=np.uint16)
+
+    # Paste the resized image onto the square image at the top-left corner
+    square_image_array[:new_height, :new_width] = resized_image_array
+
+    # Convert the square image array back to a PIL Image
+    square_image = Image.fromarray(square_image_array)
+
+    # Return the square image
+    return square_image
 
 # Function to convert seconds to hours, minutes, and seconds
 def convert_seconds_to_hms(seconds):
@@ -487,14 +539,17 @@ def crop_STIFMap(base_name, image_format='png'):
 
     print(f"Grayscale image saved to {save_path}")
 
-def scale_annotations(base_name):
+def scale_annotations(base_name, resized=False):
     """
     Scales annotations in a GeoJSON file and calculates mean intensities from an image."
     """
 
     # File paths
     input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_annotations.geojson")
-    output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_scaled_annotations.geojson")
+    if resized:
+        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_scaled_annotations_0.25.geojson")
+    else:
+        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f"{base_name}_scaled_annotations.geojson")
 
     # Load the original GeoJSON file
     with open(input_geojson_path, 'r') as f:
@@ -509,7 +564,10 @@ def scale_annotations(base_name):
 
     dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
     orig_width, orig_height = check_image_dimensions(dapi_path)
-    STIFMap_width, STIFMap_height = calc_crop_dimensions(base_name)
+    if resized:
+        STIFMap_width, STIFMap_height = check_image_dimensions(os.path.join(FINAL_OUTPUTS_DIR, f'{base_name}_STIFMap_resized.png'))
+    else:
+        STIFMap_width, STIFMap_height = calc_crop_dimensions(base_name)
 
     # Scaling factors for width and height
     # xfact = 2209 / 31398  # Approximately 0.0704
@@ -653,22 +711,25 @@ def filter_measurements(base_name):
     """
     # Construct the input and output file paths using the base name
     # input_file = f"{QUPATH_PROJECT_DIR}/{base_name}_measurements.csv"
-    input_file = f"{FINAL_OUTPUTS_DIR}/{base_name}_measurements.csv"
-    output_file = f"{FINAL_OUTPUTS_DIR}/{base_name}_filtered_measurements.csv"
+    input_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_measurements.csv")
+    output_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_filtered_measurements.csv")
 
     # Read the CSV file
     df = pd.read_csv(input_file)
 
     # Select the specified columns
-    filtered_df = df[['Object ID', 'Object type', 'Classification', 'ROI: 1.00 px per pixel: Channel 1: Mean']]
+    # filtered_df = df[['Object ID', 'Object type', 'Classification', 'ROI: 1.00 px per pixel: Channel 1: Mean']]
+    filtered_df = df[['Object ID', 'Object type', 'Classification', 'ROI: 1.00 px per pixel: Brightness: Mean']]
 
     # Rename the column 'ROI: 1.00 px per pixel: Channel 1: Mean' to 'Mean Intensity'
-    filtered_df = filtered_df.rename(columns={'ROI: 1.00 px per pixel: Channel 1: Mean': 'Mean Intensity'})
+    # filtered_df = filtered_df.rename(columns={'ROI: 1.00 px per pixel: Channel 1: Mean': 'Mean Intensity'})
+    filtered_df = filtered_df.rename(columns={'ROI: 1.00 px per pixel: Brightness: Mean': 'Mean Intensity'})
 
     # Sort the DataFrame alphabetically by the 'Classification' column
     filtered_df = filtered_df.sort_values(by='Classification')
 
     # Save the filtered and sorted data to a new CSV file
     filtered_df.to_csv(output_file, index=False)
+    print(f"Filtered and sorted data saved to {output_file}")
 
     return filtered_df

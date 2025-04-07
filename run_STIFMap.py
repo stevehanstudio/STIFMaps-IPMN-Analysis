@@ -7,16 +7,10 @@ from globals_and_helpers import (
     FINAL_OUTPUTS_DIR,
     TILE_SIZE,
     BASE_NAMES,
-    normalize_image,
-    plot_histogram,
     get_dapi_and_collagen_paths,
     convert_seconds_to_hms,
     get_base_name,
     check_image_dimensions,
-    gen_STIFMap_tile_path,
-    # save_stiffness_colormap,
-    stitch_STIFMap_tiles,
-    # stitch_images,
     gen_colormap_legend,
 )
 
@@ -54,32 +48,12 @@ STIFMap_BATCH_SIZE = 100
 print('Step size is ' + str(STIFMap_STEP) + ' pixels')
 print('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')
 
-dap_files = [
-    "15806_C0-1.tif", 
-    "15806_C0-2.tif",
-    "15806_C0-3.tif",
-    "15806_C0-4.tif",
-]
-
-collagen_files = [
-    "15806_C1-1.tif",
-    "15806_C1-2.tif",
-    "15806_C1-3.tif",
-    "15806_C1-4.tif",
-]
-
-output_files = [
-    "15806-1_STIFMap.png", 
-    "15806-2_STIFMap.png",
-    "15806-3_STIFMap.png",
-    "15806-4_STIFMap.png",
-]
-
-for i in range(len(dap_files)):
+# for i in range(len(dap_files)):
+def run_STIFMAP(base_name):
     start_time = time.perf_counter()
-    dapi_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",dap_files[i])
-    collagen_path = os.path.join(ORIG_IMAGE_DIR, "small_cropped_areas",collagen_files[i])
-    output_path = os.path.join(FINAL_OUTPUTS_DIR, output_files[i])
+    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
+    base_name = get_base_name(dapi_path)
+    output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap.png")
 
    # Check if the tile has already been processed
     if not os.path.exists(dapi_path) or not os.path.exists(collagen_path):
@@ -87,17 +61,21 @@ for i in range(len(dap_files)):
         exit
     print(f"Processing: {dapi_path}, {collagen_path}")
 
-    z_out = STIFMap_generation.generate_STIFMap(
-        dapi=dapi_path,
-        collagen=collagen_path,
-        name="test",
-        step=STIFMap_STEP,
-        models=models,
-        mask=False,
-        batch_size=STIFMap_BATCH_SIZE,
-        square_side=STIFMap_SQUARE_SIDE,
-        save_dir=False
-    )
+    try:
+        z_out = STIFMap_generation.generate_STIFMap(
+            dapi=dapi_path,
+            collagen=collagen_path,
+            name="test",
+            step=STIFMap_STEP,
+            models=models,
+            mask=False,
+            batch_size=STIFMap_BATCH_SIZE,
+            square_side=STIFMap_SQUARE_SIDE,
+            save_dir=False
+        )
+    except Exception as e:  # Catch all exceptions
+        print(f"Error occurred: {e}.  Continuing with next image")
+        return  # Skip the current iteration and move to the next item
 
     end_time = time.perf_counter()
     print("Elapsed time:", convert_seconds_to_hms(end_time - start_time))
@@ -111,7 +89,7 @@ for i in range(len(dap_files)):
     conversion_factor = (max_stiffness - min_stiffness) / 255
 
     # Print the statistics
-    print(f"Image: {output_files[i]}")
+    print(f"Image: {output_path}")
     print(f"Min Stiffness: {min_stiffness}")
     print(f"Max Stiffness: {max_stiffness}")
     print(f"Conversion Factor: {conversion_factor}")
@@ -122,3 +100,6 @@ for i in range(len(dap_files)):
     # Save the output image without normalization
     plt.imsave(output_path, output_image, cmap="gray")
     print(f"Saved image: {output_path}")
+
+for base_name in BASE_NAMES:
+    run_STIFMAP(base_name)
