@@ -639,8 +639,10 @@ def filter_measurements(base_name):
     """
     # Construct the input and output file paths using the base name
     # input_file = f"{QUPATH_PROJECT_DIR}/{base_name}_measurements.csv"
-    input_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_measurements.csv")
-    output_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_filtered_measurements.csv")
+    # input_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_measurements.csv")
+    # output_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_resized_filtered_measurements.csv")
+    input_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_measurements.csv")
+    output_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_filtered_measurements.csv")
 
     # Read the CSV file
     df = pd.read_csv(input_file)
