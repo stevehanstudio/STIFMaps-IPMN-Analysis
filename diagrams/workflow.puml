@@ -1,0 +1,55 @@
+@startuml workflow
+allowmixing
+
+skinparam ObjectBackgroundColor white
+skinparam ObjectBorderThickness 0
+' skinparam ObjectBorderColor black
+' skinparam ObjectAttributeSeparator none
+
+left to right direction
+
+object "QuPath" as qupath
+qupath : <img:QuPath_logo.jpg{scale=0.15}>
+
+object "DAPI stained" as D0
+D0 : <img:27620_C0_full-1.jpg{scale=0.25}>
+
+' object "resize.py" as resize_macro
+' rectangle "resize.py" {
+'     object resize_macro
+' }
+
+(resize) as resize_macro
+
+object "CNA35 stained (Collagen)" as D1
+D1 : <img:27620_C1_full-1.jpg{scale=0.25}>
+
+object "ImageJ" as imagej1
+imagej1 : <img:fiji-logo.png{scale=0.25}>
+
+object "ImageJ" as imagej2
+imagej2 : <img:fiji-logo.png{scale=0.25}>
+
+rectangle "run_STIFMap.py" {
+    object "generate_STIFMap" as call_stifmap
+}
+
+object "STIFMap" as stifmap_model
+stifmap_model : <img:27620_STIFMap.png{scale=0.25}>
+
+object "scale_annotation" as scale
+' (scale_annotation) as scale
+
+D0 --> imagej1
+D1 --> imagej2
+
+resize_macro --> imagej1
+resize_macro --> imagej2
+
+imagej1 --> call_stifmap
+imagej2 --> call_stifmap
+
+call_stifmap --> stifmap_model
+
+stifmap_model --> scale : "height, width"
+@enduml

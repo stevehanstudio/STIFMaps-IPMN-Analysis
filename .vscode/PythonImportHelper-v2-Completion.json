@@ -1084,7 +1084,7 @@
         "kind": 2,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "def scale_annotations(base_name, resized=False):\n    \"\"\"\n    Scales annotations in a GeoJSON file and calculates mean intensities from an image.\"\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_annotations.geojson\")\n    if resized:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations_0.25.geojson\")\n    else:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations.geojson\")",
+        "peekOfCode": "def scale_annotations(base_name, resized=False):\n    \"\"\"\n    Scales annotations in a GeoJSON file and calculates mean intensities from an image.\"\n    \"\"\"\n    # File paths\n    input_geojson_path = os.path.join(QUPATH_PROJECT_DIR, \"STIFMap\", \"annotations\", f\"{base_name}_annotations.geojson\")\n    if resized:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, \"STIFMap\", \"scaled_annotations\", f\"{base_name}_scaled_annotations_0.25.geojson\")\n    else:\n        output_geojson_path = os.path.join(QUPATH_PROJECT_DIR, f\"{base_name}_scaled_annotations.geojson\")",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1111,7 +1111,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "NO_TILING = True\nPROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:",
+        "peekOfCode": "NO_TILING = True\nPROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1120,7 +1120,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "PROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')",
+        "peekOfCode": "PROJECT_DIR = os.getcwd()\nFINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1129,7 +1129,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003",
+        "peekOfCode": "FINAL_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'final_outputs')\nTEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1138,7 +1138,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]",
+        "peekOfCode": "TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')\nMODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1147,7 +1147,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']",
+        "peekOfCode": "MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')\nQUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['9074']",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1156,7 +1156,16 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '../analysis_panel_1')\nif NO_TILING:\n    ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']",
+        "peekOfCode": "QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')\nORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['9074']\n# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '6488', '15806', '9074',]",
+        "detail": "globals_and_helpers",
+        "documentation": {}
+    },
+    {
+        "label": "ORIG_IMAGE_DIR",
+        "kind": 5,
+        "importPath": "globals_and_helpers",
+        "description": "globals_and_helpers",
+        "peekOfCode": "ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\nif NO_TILING:\n    # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')\n    TILE_SIZE = None\nelse:\n    # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')\n    TILE_SIZE = 5003\nBASE_NAMES = ['9074']\n# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']",
         "detail": "globals_and_helpers",
         "documentation": {}
     },
@@ -1165,7 +1174,7 @@
         "kind": 5,
         "importPath": "globals_and_helpers",
         "description": "globals_and_helpers",
-        "peekOfCode": "BASE_NAMES = ['27620', '4601', '7002' '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)\ndef plot_histogram(image, title):",
+        "peekOfCode": "BASE_NAMES = ['9074']\n# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '6488', '15806', '9074',]\n# BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']\n# BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']\n# Helper Functions\ndef normalize_image(image, lower_percentile=1, upper_percentile=99):\n    \"\"\"Normalize the image to the range [0, 255] using percentile-based min and max values.\"\"\"\n    min_val = np.percentile(image, lower_percentile)\n    max_val = np.percentile(image, upper_percentile)\n    return ((image - min_val) / (max_val - min_val) * 255).astype(np.uint8)",
         "detail": "globals_and_helpers",
         "documentation": {}
     },

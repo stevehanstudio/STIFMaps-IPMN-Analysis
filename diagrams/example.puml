@@ -1,0 +1,35 @@
+@startuml
+
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+title changing padding
+
+' box "Foo1"
+' participant Alice1
+' participant Alice2
+' end box
+
+' box "Foo2"
+' participant Bob1
+' participant Bob2
+' end box
+
+' box "Foo3"
+' participant Out
+' end box
+
+' Alice1 -> Bob1 : hello
+' Alice2 -> Out : out message
+
+(First_Usecase)
+(Another Usercase) as UC2
+usecase UC3
+usecase (Last\nusecase) as UC4
+
+(First Usecase) -> UC2
+UC2 <--> UC3
+UC2 ...> UC4
+UC4 <- UC5
+
+@enduml
