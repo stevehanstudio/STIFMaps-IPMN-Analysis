@@ -2,7 +2,7 @@
 from globals_and_helpers import (
     PROJECT_DIR,
     MODELS_DIR,
-    ORIG_IMAGE_DIR,
+    RESIZED_IMAGE_DIR,
     TEMP_OUTPUTS_DIR,
     FINAL_OUTPUTS_DIR,
     TILE_SIZE,
@@ -40,7 +40,8 @@ models = [
 
 # Parameters
 # STIFMap_SCALE_FACTOR = 0.5
-STIFMap_SCALE_FACTOR = 2.712
+# STIFMap_SCALE_FACTOR = 2.712
+STIFMap_SCALE_FACTOR = 5.424
 STIFMap_STEP = get_step(40, STIFMap_SCALE_FACTOR)
 STIFMap_SQUARE_SIDE = get_step(224, STIFMap_SCALE_FACTOR)
 STIFMap_BATCH_SIZE = 100
@@ -51,9 +52,12 @@ print('Side length for a square is ' + str(STIFMap_SQUARE_SIDE) + ' pixels')
 # for i in range(len(dap_files)):
 def run_STIFMAP(base_name):
     start_time = time.perf_counter()
-    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, ORIG_IMAGE_DIR)
+    dapi_path, collagen_path = get_dapi_and_collagen_paths(base_name, RESIZED_IMAGE_DIR)
     base_name = get_base_name(dapi_path)
-    output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap.png")
+    # output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap2x.png")
+
+    # Temporarily rename to run at SCALE_FACTOR = 5.424
+    output_path = os.path.join(FINAL_OUTPUTS_DIR, f"{base_name}_STIFMap2x.png")
 
    # Check if the tile has already been processed
     if not os.path.exists(dapi_path) or not os.path.exists(collagen_path):

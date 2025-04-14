@@ -46,11 +46,12 @@ for image_name in image_files:
     # base_name = os.path.splitext(image_name)[0]  # Remove extension
     base_name, ext = os.path.splitext(os.path.basename(image_name))
     # new_filename = f"{base_name}_resized.tiff"
-    new_filename = "{}_resized{}".format(base_name, ext)
+    # new_filename = "{}_resized{}".format(base_name, ext)
+    new_filename = "{}".format(base_name, ext)
     print("Saving resized image as: " + new_filename)
 
     # Save the resized image
-    IJ.saveAs(imp, "Tiff", os.path.join(TEMP_OUTPUTS_DIR, "resized_IPMN_images", new_filename))
+    IJ.saveAs(imp, "Tiff", os.path.join(TEMP_OUTPUTS_DIR, "resized0.25_IPMN_images", new_filename))
 
     # Close image
     imp.close()
