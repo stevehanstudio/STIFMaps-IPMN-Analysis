@@ -18,6 +18,7 @@ TEMP_OUTPUTS_DIR = os.path.join(PROJECT_DIR, 'temp_outputs')
 MODELS_DIR = os.path.join(PROJECT_DIR, '../STIFMap_dataset/trained_models')
 QUPATH_PROJECT_DIR = os.path.join(PROJECT_DIR, '..', 'analysis_panel_1')
 ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
+RESIZED_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized_IPMN_images')
 if NO_TILING:
     # ORIG_IMAGE_DIR = os.path.join(TEMP_OUTPUTS_DIR, 'resized0.25_IPMN_images')
     TILE_SIZE = None
@@ -25,8 +26,8 @@ else:
     # ORIG_IMAGE_DIR = os.path.join(PROJECT_DIR, 'IPMN_images')
     TILE_SIZE = 5003
 
-BASE_NAMES = ['9074']
-# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '6488', '15806', '9074',]
+BASE_NAMES = ['4601']
+# BASE_NAMES = ['27620', '4601', '7002', '13401', '1865', '5114', '15806', '9074']
 # BASE_NAMES = ['1865', '5114', '5789', '6488', '8761', '9074', '13401', '15806']
 # BASE_NAMES = ['7002', '27620', '15806', '4601', '13401', '5114', '1865']
 
@@ -627,6 +628,39 @@ def gen_report(base_name):
     plt.savefig(output_image_path, format='jpeg', bbox_inches='tight', dpi=300)
 
     print(f"Summary table saved to: {output_image_path}")
+
+# def filter_measurements(base_name):
+#     input_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_measurements.csv")
+#     output_file = os.path.join(TEMP_OUTPUTS_DIR, "Qupath_measurements", f"{base_name}_filtered_measurements.csv")
+
+#     # Read the CSV file
+#     df = pd.read_csv(input_file)
+
+#     # Print column names for debugging
+#     print(f"Columns in {base_name}_measurements.csv: {df.columns.tolist()}")
+
+#     # Check if required columns are present
+#     required_columns = ['Object ID', 'Object type', 'Classification', 'ROI: 1.00 px per pixel: Brightness: Mean']
+#     missing_columns = [col for col in required_columns if col not in df.columns]
+
+#     if missing_columns:
+#         print(f"Missing columns in {base_name}_measurements.csv: {missing_columns}")
+#         return
+
+#     # Select the specified columns
+#     filtered_df = df[required_columns]
+
+#     # Rename the column 'ROI: 1.00 px per pixel: Brightness: Mean' to 'Mean Intensity'
+#     filtered_df = filtered_df.rename(columns={'ROI: 1.00 px per pixel: Brightness: Mean': 'Mean Intensity'})
+
+#     # Sort the DataFrame alphabetically by the 'Classification' column
+#     filtered_df = filtered_df.sort_values(by='Classification')
+
+#     # Save the filtered and sorted data to a new CSV file
+#     filtered_df.to_csv(output_file, index=False)
+#     print(f"Filtered and sorted data saved to {output_file}")
+
+#     return filtered_df
 
 def filter_measurements(base_name):
     """
