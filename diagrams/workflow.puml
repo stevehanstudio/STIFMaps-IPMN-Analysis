@@ -19,7 +19,7 @@ D0 : <img:27620_C0_full-1.jpg{scale=0.25}>
 '     object resize_macro
 ' }
 
-(resize) as resize_macro
+' (resize) as resize_macro
 
 object "CNA35 stained (Collagen)" as D1
 D1 : <img:27620_C1_full-1.jpg{scale=0.25}>
